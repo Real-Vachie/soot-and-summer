@@ -10,7 +10,7 @@ def fit(im, w, h=None):
 for p in PETS:
     im = Image.open(F/f'{p}_0.png').convert('RGBA'); im = im.crop(im.getbbox())
     fit(im, 200).save(M/f'pets/{p.split("_")[0]}.webp', quality=85)
-fit(Image.open(S/'icon-512.png'), 256).save(M/'logo.png')
+fit(Image.open(S/'icon-512.png'), 256).save(M/'app-icon.png')  # the brand mark is copied by hand from summer-phone promo/brand/out
 for p in ('cat_pack', 'dog_pack'): fit(Image.open(S/f'packs/{p}.png'), 360).save(M/f'{p}.webp', quality=85)
 O = H/'Projects/sns-shorts/out/photos'
 room = Image.open(O/'group_a_16x9.png').convert('RGB'); room = room.crop((0, int(room.height * .38), room.width, room.height))  # below its title

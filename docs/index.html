@@ -8,8 +8,8 @@
 <meta name="description" content="Summer and Soot, two little cats that live on top of your Android apps. Coming soon to Google Play.">
 <meta property="og:title" content="Soot & Summer: Pocket Pets">
 <meta property="og:description" content="Two little cats that live on top of your Android apps.">
-<meta property="og:image" content="https://real-vachie.github.io/soot-and-summer/media/room.webp">
-<link rel="icon" href="media/logo.png">
+<meta property="og:image" content="https://real-vachie.github.io/soot-and-summer/media/badge.png">
+<link rel="icon" href="media/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="brand.css">
@@ -33,7 +33,8 @@ section:nth-of-type(even){background:var(--bg-2)}
 header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--bg-3)}
 header .wrap{display:flex;align-items:center;gap:16px;height:60px}
 .brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:18px;color:var(--text);text-decoration:none;white-space:nowrap}
-.brand img{width:34px;height:34px;border-radius:9px}
+.brand img{width:44px;height:auto}
+.nm .s1{color:var(--soot-name)}.nm .amp{color:var(--amp)}.nm .s2{color:var(--summer)}
 nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin-left:auto}
 nav::-webkit-scrollbar{display:none}
 nav a{color:var(--muted);text-decoration:none;font-weight:700;font-size:15px;padding:7px 12px;border-radius:99px;white-space:nowrap}
@@ -47,10 +48,10 @@ nav a.on{background:var(--bg-3);color:var(--text)}
 
 /* hero */
 .hero{position:relative;padding:80px 0 96px;text-align:center;overflow:hidden;background:var(--bg)}
-.hero::before{content:"";position:absolute;inset:0;background:url(media/room.webp) center bottom/cover;opacity:.35}
+.hero::before{content:"";position:absolute;inset:0;background:url(media/room.webp) center bottom/cover;opacity:.2;filter:blur(3px)}
 .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 35%,transparent 0,var(--bg) 75%)}
 .hero .wrap{position:relative;z-index:1}
-.logo{width:min(220px,50vw);height:auto;margin:0 auto 22px;border-radius:28%;box-shadow:0 18px 60px rgba(0,0,0,.5),0 0 80px color-mix(in srgb,var(--glow) 25%,transparent)}
+.logo{width:min(300px,62vw);height:auto;margin:0 auto 10px;filter:drop-shadow(0 16px 40px rgba(0,0,0,.45))}
 .hero h1{font-size:clamp(40px,8vw,72px);margin-bottom:8px}
 .hero .lead{margin:0 auto 26px;font-size:clamp(18px,2.4vw,22px)}
 .soon{display:inline-flex;align-items:center;gap:8px;background:var(--bg-3);border:1px solid color-mix(in srgb,var(--summer) 50%,transparent);padding:7px 16px;border-radius:99px;font-weight:800;font-size:14px;margin-bottom:26px}
@@ -127,7 +128,7 @@ footer .brand{font-size:16px}
 
 <header>
   <div class="wrap">
-    <a class="brand" href="#top"><img src="media/logo.png" alt="">Soot &amp; Summer</a>
+    <a class="brand" href="#top"><img src="media/mark-small.png" alt=""><span class="nm"><span class="s1">Soot</span> <span class="amp">&amp;</span> <span class="s2">Summer</span></span></a>
     <nav>
       <a href="#what">What it is</a>
       <a href="#shorts">Shorts</a>
@@ -141,8 +142,8 @@ footer .brand{font-size:16px}
 
 <div class="hero" id="top">
   <div class="wrap">
-    <img class="logo" src="media/logo.png" alt="Soot & Summer logo">
-    <h1>Soot &amp; Summer</h1>
+    <img class="logo" src="media/mark.png" alt="">
+    <h1><span class="nm"><span class="s1">Soot</span> <span class="amp">&amp;</span> <span class="s2">Summer</span></span></h1>
     <p class="lead">Two little cats that live on top of your apps. Pet them, carry them, try on hats.</p>
     <!-- RELEASE: swap this pill for "Get it on Google Play" (official badge + store link) -->
     <div class="soon" data-release="swap"><i></i>Android app · Coming soon to Google Play</div>
@@ -219,7 +220,7 @@ footer .brand{font-size:16px}
     <p class="lead">Summer and Soot are free. Packs are one-time purchases that add more pets, plus hats, beds and more. Try everything in the Fitting Room first, as much as you like.</p>
     <div class="packs">
       <div class="pack">
-        <img src="media/logo.png" alt="">
+        <img src="media/app-icon.png" alt="">
         <div>
           <h3>Free <span class="tag">Everyone</span></h3>
           <p>Summer and Soot with all their free looks, plus a yellow lab. The Fitting Room, the Photo booth, the Play park and Gaming mode are all free.</p>
@@ -354,7 +355,7 @@ footer .brand{font-size:16px}
 
 <footer>
   <div class="wrap">
-    <a class="brand" href="#top"><img src="media/logo.png" alt="">Soot &amp; Summer</a>
+    <a class="brand" href="#top"><img src="media/mark-small.png" alt=""><span class="nm"><span class="s1">Soot</span> <span class="amp">&amp;</span> <span class="s2">Summer</span></span></a>
     <a href="mailto:vachiek@gmail.com">vachiek@gmail.com</a>
     <a href="privacy.html">Privacy policy</a>
     <span>Sounds made with ElevenLabs.</span>

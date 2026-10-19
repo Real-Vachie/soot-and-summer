@@ -1,15 +1,18 @@
-/* Brand: the one place for colours, fonts and the logo look. The brand chat's final picks drop in here
-   (logo file: media/logo.png). Placeholder = "Cosy evening": the Shorts' room at night. Never a white page. */
+/* Brand: the one place for colours, fonts and the logo look (S&S brand, decided 2026-10-18; source:
+   summer-phone promo/brand, brand.py). Mark = media/mark.png (two cat heads back to back), badge = media/badge.png.
+   The site stays dark ("Cosy evening"); never a white page. */
 :root {
-  --bg: #1d1828;          /* night room */
-  --bg-2: #262036;        /* raised panels */
-  --bg-3: #31294a;        /* cards on panels, borders */
-  --text: #f6ecdf;        /* warm cream */
-  --muted: #c7b9cf;
-  --summer: #f0913a;      /* Summer's orange: buttons, highlights */
+  --bg: #1e1828;          /* brand plum */
+  --bg-2: #2b2238;        /* brand card */
+  --bg-3: #3a2e4a;        /* borders, chips */
+  --text: #f6efe6;        /* brand cream */
+  --muted: #c4b8cc;
+  --summer: #ee8f38;      /* Summer's orange: name, buttons, highlights */
   --summer-ink: #2a1a0c;  /* text on orange */
-  --soot: #14111c;        /* Soot's charcoal */
-  --glow: #ffd28a;        /* lamp light */
+  --soot: #14111c;        /* behind clips */
+  --soot-name: #c9bfe0;   /* "Soot" in the name */
+  --amp: #b9afc4;         /* "&" in the name */
+  --glow: #ffd28a;        /* lamp light: links */
   --radius: 18px;
   --font: "Nunito", system-ui, sans-serif;
   color-scheme: dark;
