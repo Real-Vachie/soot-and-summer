@@ -1,0 +1,16 @@
+/* Brand: the one place for colours, fonts and the logo look. The brand chat's final picks drop in here
+   (logo file: media/logo.png). Placeholder = "Cosy evening": the Shorts' room at night. Never a white page. */
+:root {
+  --bg: #1d1828;          /* night room */
+  --bg-2: #262036;        /* raised panels */
+  --bg-3: #31294a;        /* cards on panels, borders */
+  --text: #f6ecdf;        /* warm cream */
+  --muted: #c7b9cf;
+  --summer: #f0913a;      /* Summer's orange: buttons, highlights */
+  --summer-ink: #2a1a0c;  /* text on orange */
+  --soot: #14111c;        /* Soot's charcoal */
+  --glow: #ffd28a;        /* lamp light */
+  --radius: 18px;
+  --font: "Nunito", system-ui, sans-serif;
+  color-scheme: dark;
+}

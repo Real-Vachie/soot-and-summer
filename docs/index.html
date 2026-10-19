@@ -1,5 +1,393 @@
-<!doctype html><meta charset="utf-8"><title>Soot & Summer</title>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<body style="font-family:sans-serif;max-width:40em;margin:2em auto;padding:0 16px">
-<h1>Soot &amp; Summer</h1><p>Two cats that live on top of your Android apps.</p>
-<p><a href="privacy.html">Privacy policy</a></p></body>
+<title>Soot & Summer: Pocket Pets</title>
+<!-- RELEASE: description says "coming soon" -->
+<meta name="description" content="Summer and Soot, two little cats that live on top of your Android apps. Coming soon to Google Play.">
+<meta property="og:title" content="Soot & Summer: Pocket Pets">
+<meta property="og:description" content="Two little cats that live on top of your Android apps.">
+<meta property="og:image" content="https://real-vachie.github.io/soot-and-summer/media/room.webp">
+<link rel="icon" href="media/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="brand.css">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--text);font:400 17px/1.6 var(--font);-webkit-font-smoothing:antialiased}
+a{color:var(--glow)}
+img,video{display:block;max-width:100%}
+h1,h2,h3{font-weight:900;line-height:1.15;margin:0 0 .4em}
+h2{font-size:clamp(28px,5vw,40px)}
+h3{font-size:20px}
+p{margin:0 0 1em}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+section{padding:72px 0}
+section:nth-of-type(even){background:var(--bg-2)}
+.lead{font-size:19px;color:var(--muted);max-width:40em}
+.kicker{font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:13px;color:var(--summer);margin-bottom:8px}
+
+/* top bar */
+header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--bg-3)}
+header .wrap{display:flex;align-items:center;gap:16px;height:60px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:18px;color:var(--text);text-decoration:none;white-space:nowrap}
+.brand img{width:34px;height:34px;border-radius:9px}
+nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin-left:auto}
+nav::-webkit-scrollbar{display:none}
+nav a{color:var(--muted);text-decoration:none;font-weight:700;font-size:15px;padding:7px 12px;border-radius:99px;white-space:nowrap}
+nav a:hover{color:var(--text)}
+nav a.on{background:var(--bg-3);color:var(--text)}
+@media (max-width:720px){
+  header .wrap{flex-wrap:wrap;height:auto;padding-top:8px;padding-bottom:6px;gap:4px}
+  nav{margin-left:-8px;width:calc(100% + 16px)}
+  html{scroll-padding-top:100px}
+}
+
+/* hero */
+.hero{position:relative;padding:80px 0 96px;text-align:center;overflow:hidden;background:var(--bg)}
+.hero::before{content:"";position:absolute;inset:0;background:url(media/room.webp) center bottom/cover;opacity:.35}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 35%,transparent 0,var(--bg) 75%)}
+.hero .wrap{position:relative;z-index:1}
+.logo{width:min(220px,50vw);height:auto;margin:0 auto 22px;border-radius:28%;box-shadow:0 18px 60px rgba(0,0,0,.5),0 0 80px color-mix(in srgb,var(--glow) 25%,transparent)}
+.hero h1{font-size:clamp(40px,8vw,72px);margin-bottom:8px}
+.hero .lead{margin:0 auto 26px;font-size:clamp(18px,2.4vw,22px)}
+.soon{display:inline-flex;align-items:center;gap:8px;background:var(--bg-3);border:1px solid color-mix(in srgb,var(--summer) 50%,transparent);padding:7px 16px;border-radius:99px;font-weight:800;font-size:14px;margin-bottom:26px}
+.soon i{width:8px;height:8px;border-radius:50%;background:var(--summer);box-shadow:0 0 10px var(--summer)}
+.btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;font-weight:800;text-decoration:none;padding:13px 24px;border-radius:99px;background:var(--summer);color:var(--summer-ink)}
+.btn.ghost{background:transparent;color:var(--text);border:2px solid var(--bg-3)}
+.btn:hover{filter:brightness(1.08)}
+
+/* clips */
+.clip{position:relative;border-radius:var(--radius);overflow:hidden;background:var(--soot);aspect-ratio:9/16}
+.clip video{width:100%;height:100%;object-fit:cover}
+.clip button{position:absolute;right:10px;bottom:10px;border:0;border-radius:99px;padding:7px 12px;font:700 13px var(--font);background:rgba(20,17,28,.75);color:var(--text);cursor:pointer}
+.row{display:grid;grid-auto-flow:column;grid-auto-columns:min(240px,62vw);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 16px;padding:4px 16px 16px;margin:24px -16px 0}
+.row>*{scroll-snap-align:start}
+.cap{font-weight:800;margin-top:10px}
+.cap small{display:block;font-weight:400;color:var(--muted);font-size:14px}
+
+/* features */
+.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px 28px;margin-top:32px;max-width:860px}
+@media (max-width:720px){.feats{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:62vw;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 16px;padding:4px 16px 16px;margin:24px -16px 0}.feats>*{scroll-snap-align:start}}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:36px}
+.fact{background:var(--bg-2);border:1px solid var(--bg-3);border-radius:var(--radius);padding:16px 18px}
+.fact b{display:block}
+.fact span{color:var(--muted);font-size:15px}
+
+/* join the test */
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:28px 0}
+.step{background:var(--bg);border:1px solid var(--bg-3);border-radius:var(--radius);padding:20px}
+.step::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--summer);color:var(--summer-ink);font-weight:900;margin-bottom:12px}
+
+/* packs */
+.packs{display:grid;gap:20px;margin-top:32px}
+.pack{display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:start;background:var(--bg);border:1px solid var(--bg-3);border-radius:var(--radius);padding:22px}
+.pack>img{width:150px;border-radius:22px}
+.pack .tag{display:inline-block;font-size:13px;font-weight:800;padding:3px 10px;border-radius:99px;background:var(--bg-3);margin-left:6px;vertical-align:middle}
+.pets{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.pets figure{margin:0;width:78px;text-align:center;font-size:12px;color:var(--muted)}
+.pets img{width:64px;height:64px;object-fit:contain;margin:0 auto 2px}
+@media (max-width:600px){.pack{grid-template-columns:1fr}.pack>img{width:110px}}
+.every{background:linear-gradient(135deg,color-mix(in srgb,var(--summer) 18%,var(--bg)),var(--bg))}
+
+/* compare */
+table{width:100%;border-collapse:collapse;margin-top:28px;font-size:15px}
+th,td{padding:12px 10px;border-bottom:1px solid var(--bg-3);text-align:center}
+th:first-child,td:first-child{text-align:left}
+thead th{font-weight:900}
+td.y{color:var(--summer);font-weight:900}
+td.n{color:var(--muted);opacity:.5}
+.tablewrap{overflow-x:auto}
+
+/* faq */
+.faq h3{margin:34px 0 10px;color:var(--summer);font-size:16px;letter-spacing:.06em;text-transform:uppercase}
+details{background:var(--bg);border:1px solid var(--bg-3);border-radius:14px;margin-bottom:8px}
+summary{cursor:pointer;font-weight:800;padding:14px 18px;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--summer);font-weight:900}
+details[open] summary::after{content:"–"}
+details>div{padding:0 18px 6px;color:var(--muted)}
+details>div b{color:var(--text)}
+details ul{padding-left:20px;margin:0 0 1em}
+
+/* about */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+.about img{border-radius:var(--radius)}
+@media (max-width:720px){.about{grid-template-columns:1fr}}
+
+footer{padding:36px 0 48px;color:var(--muted);font-size:15px;border-top:1px solid var(--bg-3)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center}
+footer .brand{font-size:16px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="media/logo.png" alt="">Soot &amp; Summer</a>
+    <nav>
+      <a href="#what">What it is</a>
+      <a href="#shorts">Shorts</a>
+      <a href="#join" data-release="remove">Join the test</a>
+      <a href="#packs">Packs</a>
+      <a href="#faq">FAQ</a>
+      <a href="#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <div class="wrap">
+    <img class="logo" src="media/logo.png" alt="Soot & Summer logo">
+    <h1>Soot &amp; Summer</h1>
+    <p class="lead">Two little cats that live on top of your apps. Pet them, carry them, try on hats.</p>
+    <!-- RELEASE: swap this pill for "Get it on Google Play" (official badge + store link) -->
+    <div class="soon" data-release="swap"><i></i>Android app · Coming soon to Google Play</div>
+    <div class="btns">
+      <!-- RELEASE: this button becomes the Play Store link -->
+      <a class="btn" href="#join" data-release="swap">Try it early</a>
+      <a class="btn ghost" href="#shorts">Watch the shorts</a>
+    </div>
+  </div>
+</div>
+
+<section id="what">
+  <div class="wrap">
+    <div class="kicker">What it is</div>
+    <h2>Pocket pets for your phone</h2>
+    <p class="lead">Summer, an orange tabby, and Soot, a black cat, wander along the bottom of your screen, on top of whatever app you're using. They nap, groom, chase each other and curl up together. Tap one for a hello, stroke one for purrs and hearts, or pick one up and carry it around.</p>
+    <div class="feats">
+      <div><div class="clip"><video src="media/clips/moment-dress.mp4" poster="media/clips/moment-dress.jpg" muted loop playsinline preload="none"></video></div>
+        <div class="cap">Pick a hat<small>Choose a hat for each pet, then pose them in the Photo booth.</small></div></div>
+      <div><div class="clip"><video src="media/clips/moment-park.mp4" poster="media/clips/moment-park.jpg" muted loop playsinline preload="none"></video></div>
+        <div class="cap">A park just for them<small>Open the Play park and the whole screen is theirs.</small></div></div>
+      <div><div class="clip"><video src="media/clips/moment-game.mp4" poster="media/clips/moment-game.jpg" muted loop playsinline preload="none"></video></div>
+        <div class="cap">Out of the way for games<small>Gaming mode: when a game or video goes full screen, they step aside.</small></div></div>
+      <div><div class="clip"><video src="media/clips/moment-tap.mp4" poster="media/clips/moment-tap.jpg" muted loop playsinline preload="none"></video></div>
+        <div class="cap">An app on every pet<small>Double-tap a pet to open the app you picked for it.</small></div></div>
+      <div><div class="clip"><video src="media/clips/moment-wx.mp4" poster="media/clips/moment-wx.jpg" muted loop playsinline preload="none"></video></div>
+        <div class="cap">Dressed for the weather<small>Sun hats for sun, umbrellas for rain, picked from your city's forecast. Turn it on in Settings; comes with any pack.</small></div></div>
+      <div><div class="clip"><video src="media/clips/moment-tile.mp4" poster="media/clips/moment-tile.jpg" muted loop playsinline preload="none"></video></div>
+        <div class="cap">Need your screen?<small>One tap on the Pets tile hides them, one more brings them back.</small></div></div>
+    </div>
+    <div class="facts">
+      <div class="fact"><b>Light on battery</b><span>They rest most of the time and stop when the screen is off.</span></div>
+      <div class="fact"><b>Never in your way</b><span>Touch Off lets your taps go straight through them.</span></div>
+      <div class="fact"><b>Photo booth</b><span>Pose your pets and share the picture.</span></div>
+      <div class="fact"><b>No ads, no account</b><span>No tracking either. Your settings stay on your phone.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="shorts">
+  <div class="wrap">
+    <div class="kicker">Shorts</div>
+    <h2>Little cartoons</h2>
+    <p class="lead">Summer is bold and causes the trouble. Soot is sleepy, deadpan and secretly sweet. Tap a clip for sound.</p>
+    <!-- New shorts: add a card here (and the clip in tools/media.sh) once it's posted. -->
+    <div class="row">
+      <div><div class="clip"><video src="media/clips/notice-me.mp4" poster="media/clips/notice-me.jpg" muted loop playsinline preload="none"></video><button>🔇 Sound</button></div><div class="cap">Notice me!</div></div>
+      <div><div class="clip"><video src="media/clips/say-cheese.mp4" poster="media/clips/say-cheese.jpg" muted loop playsinline preload="none"></video><button>🔇 Sound</button></div><div class="cap">Say cheese!</div></div>
+      <div><div class="clip"><video src="media/clips/sunbeam.mp4" poster="media/clips/sunbeam.jpg" muted loop playsinline preload="none"></video><button>🔇 Sound</button></div><div class="cap">Sunbeam</div></div>
+      <div><div class="clip"><video src="media/clips/if-it-fits.mp4" poster="media/clips/if-it-fits.jpg" muted loop playsinline preload="none"></video><button>🔇 Sound</button></div><div class="cap">If it fits…</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- RELEASE: remove this whole section (and its nav link) on launch day -->
+<section id="join" data-release="remove">
+  <div class="wrap">
+    <div class="kicker">Join the test</div>
+    <h2>Try it before everyone else</h2>
+    <p class="lead">Soot &amp; Summer is in a closed test on Google Play. Testers get the app early, and every pack is free while the test runs: Play still shows the price, but testers are never charged.</p>
+    <div class="steps">
+      <div class="step"><h3>Join the group</h3><p>Join our Google Group with the Google account you use for Play.</p><a class="btn" href="https://groups.google.com/g/soot-and-summer-testing">Join the group</a></div>
+      <div class="step"><h3>Opt in</h3><p>Open the test page on Google Play and tap to become a tester.</p><a class="btn" href="https://play.google.com/apps/testing/com.realvachie.sootandsummer">Become a tester</a></div>
+      <div class="step"><h3>Install</h3><p>Install Soot &amp; Summer from Google Play and stay opted in for 14 days. That's all Google needs from you.</p></div>
+    </div>
+    <p>Found a bug or have an idea? The <b>Testers</b> card at the top of Settings has <b>Report a bug</b> and <b>Send an idea</b>.</p>
+  </div>
+</section>
+
+<section id="packs">
+  <div class="wrap">
+    <div class="kicker">Packs</div>
+    <h2>Free to start, packs for more</h2>
+    <p class="lead">Summer and Soot are free. Packs are one-time purchases that add more pets, plus hats, beds and more. Try everything in the Fitting Room first, as much as you like.</p>
+    <div class="packs">
+      <div class="pack">
+        <img src="media/logo.png" alt="">
+        <div>
+          <h3>Free <span class="tag">Everyone</span></h3>
+          <p>Summer and Soot with all their free looks, plus a yellow lab. The Fitting Room, the Photo booth, the Play park and Gaming mode are all free.</p>
+          <div class="pets">
+            <figure><img src="media/pets/summer.webp" alt="">Summer</figure>
+            <figure><img src="media/pets/soot.webp" alt="">Soot</figure>
+            <figure><img src="media/pets/lab.webp" alt="">Yellow lab</figure>
+          </div>
+        </div>
+      </div>
+      <div class="pack">
+        <img src="media/cat_pack.webp" alt="Cat Pack">
+        <div>
+          <h3>Cat Pack <span class="tag">One-time</span></h3>
+          <p>5 critters and 5 wild cats, each with its own voice. And your own cat from a photo: tap its fur, stripes and eyes on a picture and it joins the others. The photo never leaves your phone.</p>
+          <div class="pets">
+            <figure><img src="media/pets/raccoon.webp" alt="">Raccoon</figure>
+            <figure><img src="media/pets/redpanda.webp" alt="">Red panda</figure>
+            <figure><img src="media/pets/fox.webp" alt="">Fox</figure>
+            <figure><img src="media/pets/skunk.webp" alt="">Skunk</figure>
+            <figure><img src="media/pets/possum.webp" alt="">Possum</figure>
+            <figure><img src="media/pets/lynx.webp" alt="">Lynx</figure>
+            <figure><img src="media/pets/serval.webp" alt="">Serval</figure>
+            <figure><img src="media/pets/caracal.webp" alt="">Caracal</figure>
+            <figure><img src="media/pets/snowleopard.webp" alt="">Snow leopard</figure>
+            <figure><img src="media/pets/sandcat.webp" alt="">Sand cat</figure>
+          </div>
+        </div>
+      </div>
+      <div class="pack">
+        <img src="media/dog_pack.webp" alt="Dog Pack">
+        <div>
+          <h3>Dog Pack <span class="tag">One-time</span></h3>
+          <p>14 more dogs to join the free yellow lab: breeds like the corgi, husky and pug, plus a wolf, coyote, dingo, jackal and arctic fox.</p>
+          <div class="pets">
+            <figure><img src="media/pets/corgi.webp" alt="">Corgi</figure>
+            <figure><img src="media/pets/husky.webp" alt="">Husky</figure>
+            <figure><img src="media/pets/pug.webp" alt="">Pug</figure>
+            <figure><img src="media/pets/dachshund.webp" alt="">Dachshund</figure>
+            <figure><img src="media/pets/dalmatian.webp" alt="">Dalmatian</figure>
+            <figure><img src="media/pets/shiba.webp" alt="">Shiba</figure>
+            <figure><img src="media/pets/beagle.webp" alt="">Beagle</figure>
+            <figure><img src="media/pets/greyhound.webp" alt="">Greyhound</figure>
+            <figure><img src="media/pets/wolf.webp" alt="">Wolf</figure>
+            <figure><img src="media/pets/arcticfox.webp" alt="">Arctic fox</figure>
+          </div>
+        </div>
+      </div>
+      <div class="pack every">
+        <img src="media/group.webp" alt="" style="aspect-ratio:1;object-fit:cover">
+        <div>
+          <h3>Any pack also gives</h3>
+          <p>Up to 4 more pets besides Summer and Soot, each with its own name, look and double-tap app, plus hats, beds and weather outfits for all your pets. Any pets we add to your pack later are yours too.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th></th><th>Free</th><th>Cat Pack</th><th>Dog Pack</th></tr></thead>
+      <tbody>
+        <tr><td>Summer, Soot and a yellow lab</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><td>Fitting Room, Photo booth, Play park, Gaming mode</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><td>5 critters, 5 wild cats, your cat from a photo</td><td class="n">–</td><td class="y">✓</td><td class="n">–</td></tr>
+        <tr><td>14 more dogs</td><td class="n">–</td><td class="n">–</td><td class="y">✓</td></tr>
+        <tr><td>Up to 4 more pets, hats, beds, weather outfits</td><td class="n">–</td><td class="y">✓</td><td class="y">✓</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="faq">
+  <div class="wrap">
+    <div class="kicker">FAQ</div>
+    <h2>Questions</h2>
+<!-- FAQ:START (made by tools/faq.py from the app's help/faq.md; edit there, then run it) -->
+<h3>Getting started</h3>
+<details><summary>How do I get my pets on the screen?</summary><div><p>Tap <b>Let them out</b> at the top of Pets. The first time, Android asks you to allow <b>Display over other apps</b> for Soot &amp; Summer: turn it on, come back, and out they come.</p></div></details>
+<details><summary>Why does it need "Display over other apps"?</summary><div><p>That's what lets your pets walk on top of the apps you use. They only feel where your finger touches them; they never read what's on your screen.</p></div></details>
+<details><summary>Why is there a notification?</summary><div><p>Android needs one while your pets are out. It's handy too: <b>Touch</b> (tap to step through On, Shy and Off), <b>Bed</b>, and <b>Hide pets</b> are right there, and tapping it opens the app.</p></div></details>
+<details><summary>How do I put them away?</summary><div><p><b>Put them away</b> at the top of Pets takes them off the screen. <b>Send to bed</b> keeps them, asleep in their bed. <b>Hide pets</b> in the notification hides them until you tap <b>Show pets</b>.</p></div></details>
+<h3>Playing with your pets</h3>
+<details><summary>What can I do with them?</summary><div><ul><li><b>Tap</b>: a hello.</li><li><b>Stroke</b>: happy sounds and hearts.</li><li><b>Hold and drag</b>: pick a pet up and carry it around.</li><li><b>Double-tap</b>: opens the pet's double-tap app.</li><li><b>Tap a sleeping pet</b>: it half wakes up.</li><li><b>Tap the bed</b>: wakes them up (with Bed out: invites one for a nap).</li></ul></div></details>
+<details><summary>What's the double-tap app?</summary><div><p>Each pet can open an app of your choice when you double-tap it. On Pets, find the pet's card and tap the <b>Double-tap opens</b> tile once → <b>Pick an app</b>.</p></div></details>
+<details><summary>What do Touch On, Shy and Off mean?</summary><div><ul><li><b>On</b>: tap, stroke and pick up your pets.</li><li><b>Shy</b>: they look as usual, but any touch sends them away, and they come back when you leave the phone alone. Choose how they leave (<b>Peek</b>, <b>Move away</b> or <b>Disappear</b>) and how soon they come back.</li><li><b>Off</b>: your taps go through them to the app underneath, handy for texting.</li></ul><p>You'll find Touch on Pets, in Settings, and in the notification.</p></div></details>
+<details><summary>What's Gaming mode?</summary><div><p>It keeps your pets out of the way while you play. It starts on <b>Auto</b>; change it in Settings:</p><ul><li><b>Auto:</b> when a game or a video goes full screen, they leave the way you pick under Leave by (Peek, Move away or Disappear, the same as Shy's), and come back once it ends. Touch works as usual the rest of the time.</li><li><b>On:</b> hold a pet still for 3 seconds (with Touch on Shy, any touch) and they all duck down, ears and eyes peeking up from the bottom, while your taps go through. Set Touch again, or turn Gaming mode off, to bring them up.</li><li><b>Off:</b> they stay where they are, full screen or not.</li></ul></div></details>
+<details><summary>Can I hide my pets from the Quick Settings shade?</summary><div><p>Yes. Swipe down from the top, tap the pencil (edit), and drag the <b>Pets</b> tile in. Tap it to <b>Hide pets</b> or <b>Show pets</b>, or to let them out when they're not out. Hold it to open the app.</p></div></details>
+<details><summary>Can my pets have their own personality?</summary><div><p>Yes. On Pets, find the pet's card and pick <b>Sleepy</b>, <b>Balanced</b> or <b>Zoomy</b>, or tap <b>Custom</b> to set how much they nap, climb and get the zoomies. Summer starts Zoomy, Soot starts Sleepy.</p></div></details>
+<details><summary>Can I make a pet chubbier?</summary><div><p>Yes: on the pet's card on Pets, slide <b>Weight</b> from Normal to Chonky.</p></div></details>
+<details><summary>What's the bed for?</summary><div><p>They curl up in it when you <b>Send to bed</b>. Turn on <b>Bed out</b> in Settings and it stays in the corner while they're awake, for naps. Tap <b>Choose bed</b> on Pets to pick another one.</p></div></details>
+<details><summary>Can I change the app's colours?</summary><div><p>Yes: <b>Settings › App colours</b> has ten colours, each in Dark or Light, all free. They change the app's pages only; your pets look the same.</p></div></details>
+<details><summary>Why do the pages stop above my pets?</summary><div><p>That's <b>Room for pets</b>: while the app is open, its pages end above your pets so you can see them as you change things. The pages still scroll. Turn it off in Settings to have the pages fill the screen again.</p></div></details>
+<details><summary>What happens when I turn the phone?</summary><div><p>Their floor becomes a wall: they cling on or tumble down, and sometimes get a real fright. Don't want that? Turn off <b>Startled by turning</b> in Settings.</p></div></details>
+<h3>Something's not right</h3>
+<details><summary>My pets vanish after a while.</summary><div><p>Your phone is saving battery and closed the app. Go to Settings → Apps → Soot &amp; Summer → Battery → <b>Unrestricted</b>.</p></div></details>
+<details><summary>I can't tap the thing under a pet.</summary><div><p>Set Touch to <b>Off</b> and your taps go through them. Or <b>Shy</b>: one touch and they get out of your way.</p></div></details>
+<details><summary>They're standing on my keyboard or the bar at the bottom.</summary><div><p>In Settings, <b>Floor height</b> moves where they stand (Lowest, Low, High or Custom), and <b>Walls</b> sets how close to the sides they walk (Edge, A little, More or Custom). Pick Custom and slide: they move as you do.</p></div></details>
+<details><summary>I can't hear them.</summary><div><p>Check <b>Sounds</b> is on in Settings and the <b>Volume</b> slider under it. They're quiet when your phone is on silent.</p></div></details>
+<h3>Your pets</h3>
+<details><summary>Can I add more pets?</summary><div><p>Yes, with any pack: <b>Add a pet</b> on Pets, up to 4 more besides Summer and Soot. Give each one a look, a hat, a name and its own double-tap app.</p></div></details>
+<details><summary>How do I rename, remove or rest a pet?</summary><div><p>On the pet's card: <b>Rename</b> or <b>Remove</b> (extra pets only). Its switch says <b>Comes out</b> or <b>Stays in</b>, so a pet can sit out for a while without being removed.</p></div></details>
+<details><summary>How do I make them bigger or smaller?</summary><div><p>Each pet has its own <b>Size</b> slider on its card, Tiny to Huge, so a big dog can stand taller than a small cat. <b>Size</b> in Settings sets every pet to Small, Medium or Large at once, and overwrites each pet's own size.</p></div></details>
+<details><summary>Can I make a pet that looks like my cat?</summary><div><p>With the Cat Pack: choose a look, then tap <b>From a photo</b>. Pick a photo of your cat, then tap its fur, stripes and patches to copy the colours. The photo stays on your phone and isn't kept; only the colours you pick are saved.</p></div></details>
+<details><summary>What's the Fitting Room?</summary><div><p>Where you try on anything (looks, hats, beds, even pets from packs you don't have) as much as you like. Everything comes off when you leave.</p></div></details>
+<details><summary>How do I take a picture of my pets?</summary><div><p>Open the <b>Photo booth</b> on Pets. Drag your pets around, pinch to resize, tap one for poses and faces, then <b>Share</b>, or <b>Save</b> (Android 10 and up). In the Fitting Room, <b>📷 Take a photo</b> brings what they're trying on.</p></div></details>
+<details><summary>Can I turn off the holiday hats?</summary><div><p>Yes: <b>Holiday hats &amp; beds</b> in Settings. Off, they leave the lists, holiday hats come off and a holiday bed goes back to the rug.</p></div></details>
+<h3>Packs</h3>
+<details><summary>What's free?</summary><div><p>Summer and Soot, with every look in the <b>Free</b> tab.</p></div></details>
+<details><summary>What do I get in a pack?</summary><div><p>Each pack adds its own pets and looks, and with any pack you can add more pets, plus hats and beds. The <b>Packs</b> page shows what's in each one. You can try everything in the Fitting Room first.</p></div></details>
+<details><summary>I got a new phone or reinstalled. Where are my packs?</summary><div><p>Packs come back by themselves when you open the app, as long as the phone uses the same Google account you bought them with. A purchase that's still waiting on Google Play shows up once it goes through.</p></div></details>
+<details><summary>How do I update?</summary><div><p>When Google Play has a newer version, a row at the top of Pets says <b>Update ›</b>. It downloads while you keep playing, then tap <b>Restart ›</b> and your pets come back out.</p></div></details>
+<h3>Battery and privacy</h3>
+<details><summary>Does it use a lot of battery?</summary><div><p>Your pets rest most of the time, and they stop moving when the screen is off or when you tap <b>Hide pets</b>. For none at all, tap <b>Put them away</b>. Most phones show Soot &amp; Summer's battery use in Settings → Battery, so you can check it yourself.</p></div></details>
+<details><summary>What does the app know about me?</summary><div><p>Your settings, the app you pick for double-tap and any photo you use stay on your phone. Nothing leaves it except what Google Play needs to sell a pack or tell you an update is ready, and one date check around launch week. No accounts, no ads, no tracking. The full privacy policy is on our website.</p></div></details>
+<details><summary>How do I remove the app?</summary><div><p>Tap <b>Put them away</b>, then uninstall it like any app. Pictures you saved from the Photo booth stay in Pictures › Soot &amp; Summer.</p></div></details>
+<!-- FAQ:END -->
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about">
+    <div>
+      <div class="kicker">About</div>
+      <h2>Made by Claude and Vachie</h2>
+      <p class="lead">Soot &amp; Summer is made by Claude, an AI, with Vachie, a human who tests every change on real phones. Summer and Soot are made-up characters with big personalities, here to keep you company while you use your phone.</p>
+      <p class="lead">Ideas and bug reports are always welcome: <a href="mailto:vachiek@gmail.com">vachiek@gmail.com</a>.</p>
+    </div>
+    <img src="media/group.webp" alt="Summer, Soot and friends in hats">
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="media/logo.png" alt="">Soot &amp; Summer</a>
+    <a href="mailto:vachiek@gmail.com">vachiek@gmail.com</a>
+    <a href="privacy.html">Privacy policy</a>
+    <span>Sounds made with ElevenLabs.</span>
+  </div>
+</footer>
+
+<script>
+// Clips play only while on screen; a tap (or the Sound button) turns one clip's sound on and the rest off.
+const vids = [...document.querySelectorAll('.clip video')];
+const seen = new IntersectionObserver(es => es.forEach(e => {
+  const v = e.target;
+  if (e.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); } else v.pause();
+}), {threshold: .5});
+vids.forEach(v => {
+  seen.observe(v);
+  const b = v.parentElement.querySelector('button');
+  const toggle = () => {
+    const on = v.muted;
+    vids.forEach(o => { o.muted = true; const ob = o.parentElement.querySelector('button'); if (ob) ob.textContent = '🔇 Sound'; });
+    v.muted = !on; if (on) { v.currentTime = 0; v.play().catch(() => {}); }
+    if (b) b.textContent = on ? '🔊 Sound on' : '🔇 Sound';
+  };
+  v.addEventListener('click', toggle); if (b) b.addEventListener('click', toggle);
+});
+// The nav highlights the section you're reading (and slides it into view on phones).
+const nav = document.querySelector('nav'), links = [...nav.querySelectorAll('a')];
+const spy = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id));
+  const on = nav.querySelector('a.on');
+  if (on) nav.scrollTo({left: on.offsetLeft - nav.offsetLeft - 16, behavior: 'smooth'});
+}), {rootMargin: '-45% 0px -50% 0px'});
+document.querySelectorAll('section[id]').forEach(s => spy.observe(s));
+</script>
+</body>
+</html>
