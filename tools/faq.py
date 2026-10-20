@@ -1,6 +1,7 @@
 # The site's FAQ, made from the app's Help text (summer-phone help/faq.md, the one source for both).
 # Writes it into docs/index.html between the FAQ:START / FAQ:END marks. Run after the Help text changes.
-import html, re
+# --check: only say whether the page is stale (exit 1), for linked-check.
+import html, re, sys
 from pathlib import Path
 
 SRC = Path.home()/'Projects/summer-phone/help/faq.md'
@@ -39,5 +40,8 @@ flush()
 page = PAGE.read_text()
 start = page.index('<!-- FAQ:START'); start = page.index('-->', start) + 3
 end = page.index('<!-- FAQ:END')
-PAGE.write_text(page[:start] + '\n' + '\n'.join(blocks) + '\n' + page[end:])
+new = page[:start] + '\n' + '\n'.join(blocks) + '\n' + page[end:]
+if '--check' in sys.argv:   # linked-check (MasterPlan claude/linked.toml): exit 1 when the page is stale, write nothing
+    sys.exit(0 if new == page else 'docs/index.html FAQ is stale: run tools/faq.py')
+PAGE.write_text(new)
 print(f'{sum(b.startswith("<details") for b in blocks)} questions')
