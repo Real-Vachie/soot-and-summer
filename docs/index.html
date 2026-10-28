@@ -9,13 +9,21 @@
 <meta property="og:title" content="Soot & Summer: Pocket Pets">
 <meta property="og:description" content="Two little cats that live on top of your Android apps.">
 <meta property="og:image" content="https://soot-and-summer.com/media/badge.png?v=2">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://soot-and-summer.com/">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://soot-and-summer.com/">
+<meta name="theme-color" content="#1e1828">
 <link rel="icon" href="media/favicon.png?v=2">
+<link rel="apple-touch-icon" href="media/app-icon.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="brand.css">
 <style>
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:72px}
+html{scroll-padding-top:72px}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+:focus-visible{outline:3px solid var(--glow);outline-offset:3px}
 body{margin:0;background:var(--bg);color:var(--text);font:400 17px/1.6 var(--font);-webkit-font-smoothing:antialiased}
 a{color:var(--glow)}
 img,video{display:block;max-width:100%}
@@ -25,6 +33,7 @@ h3{font-size:20px}
 p{margin:0 0 1em}
 .wrap{max-width:1080px;margin:0 auto;padding:0 16px}
 section{padding:72px 0}
+@media (max-width:720px){section{padding:52px 0}.hero{padding:60px 0 72px}}
 section:nth-of-type(even){background:var(--bg-2)}
 .lead{font-size:19px;color:var(--muted);max-width:40em}
 .kicker{font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:13px;color:var(--summer);margin-bottom:8px}
@@ -37,12 +46,12 @@ header .wrap{display:flex;align-items:center;gap:16px;height:60px}
 .nm .s1{color:var(--soot-name)}.nm .amp{color:var(--amp)}.nm .s2{color:var(--summer)}
 nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin-left:auto}
 nav::-webkit-scrollbar{display:none}
-nav a{color:var(--muted);text-decoration:none;font-weight:700;font-size:15px;padding:7px 12px;border-radius:99px;white-space:nowrap}
+nav a{color:var(--muted);text-decoration:none;font-weight:700;font-size:15px;padding:10px 12px;border-radius:99px;white-space:nowrap}
 nav a:hover{color:var(--text)}
 nav a.on{background:var(--bg-3);color:var(--text)}
 @media (max-width:720px){
   header .wrap{flex-wrap:wrap;height:auto;padding-top:8px;padding-bottom:6px;gap:4px}
-  nav{margin-left:-8px;width:calc(100% + 16px)}
+  nav{margin-left:-8px;width:calc(100% + 16px);-webkit-mask-image:linear-gradient(to right,#000 85%,transparent);mask-image:linear-gradient(to right,#000 85%,transparent)}
   html{scroll-padding-top:100px}
 }
 
@@ -58,13 +67,13 @@ nav a.on{background:var(--bg-3);color:var(--text)}
 .soon i{width:8px;height:8px;border-radius:50%;background:var(--summer);box-shadow:0 0 10px var(--summer)}
 .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .btn{display:inline-block;font-weight:800;text-decoration:none;padding:13px 24px;border-radius:99px;background:var(--summer);color:var(--summer-ink)}
-.btn.ghost{background:transparent;color:var(--text);border:2px solid var(--bg-3)}
+.btn.ghost{background:transparent;color:var(--text);border:2px solid color-mix(in srgb,var(--muted) 40%,var(--bg))}
 .btn:hover{filter:brightness(1.08)}
 
 /* clips */
 .clip{position:relative;border-radius:var(--radius);overflow:hidden;background:var(--soot);aspect-ratio:9/16}
 .clip video{width:100%;height:100%;object-fit:cover}
-.clip button{position:absolute;right:10px;bottom:10px;border:0;border-radius:99px;padding:7px 12px;font:700 13px var(--font);background:rgba(20,17,28,.75);color:var(--text);cursor:pointer}
+.clip button{position:absolute;right:10px;bottom:10px;border:0;border-radius:99px;padding:10px 14px;min-height:40px;font:700 13px var(--font);background:rgba(20,17,28,.75);color:var(--text);cursor:pointer}
 .row{display:grid;grid-auto-flow:column;grid-auto-columns:min(240px,62vw);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 16px;padding:4px 16px 16px;margin:24px -16px 0}
 .row>*{scroll-snap-align:start}
 .cap{font-weight:800;margin-top:10px}
@@ -80,7 +89,7 @@ nav a.on{background:var(--bg-3);color:var(--text)}
 
 /* join the test */
 .steps{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:28px 0}
-.step{background:var(--bg);border:1px solid var(--bg-3);border-radius:var(--radius);padding:20px}
+.step{background:var(--bg-2);border:1px solid var(--bg-3);border-radius:var(--radius);padding:20px}
 .step::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--summer);color:var(--summer-ink);font-weight:900;margin-bottom:12px}
 
 /* packs */
@@ -100,12 +109,12 @@ th,td{padding:12px 10px;border-bottom:1px solid var(--bg-3);text-align:center}
 th:first-child,td:first-child{text-align:left}
 thead th{font-weight:900}
 td.y{color:var(--summer);font-weight:900}
-td.n{color:var(--muted);opacity:.5}
+td.n{color:var(--muted)}
 .tablewrap{overflow-x:auto}
 
 /* faq */
 .faq h3{margin:34px 0 10px;color:var(--summer);font-size:16px;letter-spacing:.06em;text-transform:uppercase}
-details{background:var(--bg);border:1px solid var(--bg-3);border-radius:14px;margin-bottom:8px}
+details{background:var(--bg-2);border:1px solid var(--bg-3);border-radius:14px;margin-bottom:8px}
 summary{cursor:pointer;font-weight:800;padding:14px 18px;list-style:none;display:flex;justify-content:space-between;gap:12px}
 summary::-webkit-details-marker{display:none}
 summary::after{content:"+";color:var(--summer);font-weight:900}
@@ -140,6 +149,7 @@ footer .brand{font-size:16px}
   </div>
 </header>
 
+<main>
 <div class="hero" id="top">
   <div class="wrap">
     <img class="logo" src="media/mark.svg?v=2" alt="">
@@ -176,7 +186,7 @@ footer .brand{font-size:16px}
     </div>
     <div class="facts">
       <div class="fact"><b>Light on battery</b><span>They rest most of the time and stop when the screen is off.</span></div>
-      <div class="fact"><b>Never in your way</b><span>Touch Off lets your taps go straight through them.</span></div>
+      <div class="fact"><b>Never in your way</b><span>They get out of the way by themselves: Gaming mode (on Auto) moves them aside when a game or video fills the screen, and they turn Tiny at the very bottom when a keyboard opens. On Shy, one touch sends them off until you leave the phone alone. Touch Off lets your taps go straight through them.</span></div>
       <div class="fact"><b>Photo booth</b><span>Pose your pets and share the picture.</span></div>
       <div class="fact"><b>No ads, no account</b><span>No tracking either. Your settings stay on your phone.</span></div>
     </div>
@@ -190,10 +200,10 @@ footer .brand{font-size:16px}
     <p class="lead">Summer is bold and causes the trouble. Soot is sleepy, deadpan and secretly sweet. Tap a clip for sound.</p>
     <!-- New shorts: add a card here (and the clip in tools/media.sh) once it's posted. -->
     <div class="row">
-      <div><div class="clip"><video src="media/clips/notice-me.mp4" poster="media/clips/notice-me.jpg?v=2" muted loop playsinline preload="none"></video><button>🔇 Sound</button></div><div class="cap">Notice me!</div></div>
-      <div><div class="clip"><video src="media/clips/say-cheese.mp4" poster="media/clips/say-cheese.jpg?v=2" muted loop playsinline preload="none"></video><button>🔇 Sound</button></div><div class="cap">Say cheese!</div></div>
-      <div><div class="clip"><video src="media/clips/sunbeam.mp4" poster="media/clips/sunbeam.jpg?v=2" muted loop playsinline preload="none"></video><button>🔇 Sound</button></div><div class="cap">Sunbeam</div></div>
-      <div><div class="clip"><video src="media/clips/if-it-fits.mp4" poster="media/clips/if-it-fits.jpg?v=2" muted loop playsinline preload="none"></video><button>🔇 Sound</button></div><div class="cap">If it fits…</div></div>
+      <div><div class="clip"><video src="media/clips/notice-me.mp4" poster="media/clips/notice-me.jpg?v=2" muted loop playsinline preload="none"></video><button aria-label="Sound for Notice me!">🔇 Sound</button></div><div class="cap">Notice me!</div></div>
+      <div><div class="clip"><video src="media/clips/say-cheese.mp4" poster="media/clips/say-cheese.jpg?v=2" muted loop playsinline preload="none"></video><button aria-label="Sound for Say cheese!">🔇 Sound</button></div><div class="cap">Say cheese!</div></div>
+      <div><div class="clip"><video src="media/clips/sunbeam.mp4" poster="media/clips/sunbeam.jpg?v=2" muted loop playsinline preload="none"></video><button aria-label="Sound for Sunbeam">🔇 Sound</button></div><div class="cap">Sunbeam</div></div>
+      <div><div class="clip"><video src="media/clips/if-it-fits.mp4" poster="media/clips/if-it-fits.jpg?v=2" muted loop playsinline preload="none"></video><button aria-label="Sound for If it fits…">🔇 Sound</button></div><div class="cap">If it fits…</div></div>
     </div>
   </div>
 </section>
@@ -292,14 +302,14 @@ footer .brand{font-size:16px}
 
     <div class="tablewrap">
     <table>
-      <thead><tr><th></th><th>Free</th><th>Cat Pack</th><th>Dog Pack</th><th>Backyard Pack</th></tr></thead>
+      <thead><tr><th><span style="position:absolute;left:-9999px">What you get</span></th><th>Free</th><th>Cat Pack</th><th>Dog Pack</th><th>Backyard Pack</th></tr></thead>
       <tbody>
-        <tr><td>Summer, Soot, a yellow lab and a red panda</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
-        <tr><td>Fitting Room, Photo booth, Play park, Gaming mode</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
-        <tr><td>5 wild cats, your cat from a photo</td><td class="n">–</td><td class="y">✓</td><td class="n">–</td><td class="n">–</td></tr>
-        <tr><td>14 more dogs</td><td class="n">–</td><td class="n">–</td><td class="y">✓</td><td class="n">–</td></tr>
-        <tr><td>A raccoon, fox, skunk, possum, squirrel, chipmunk and groundhog</td><td class="n">–</td><td class="n">–</td><td class="n">–</td><td class="y">✓</td></tr>
-        <tr><td>Up to 4 more pets, hats, beds, weather outfits</td><td class="n">–</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><td>Summer, Soot, a yellow lab and a red panda</td><td class="y" aria-label="Yes">✓</td><td class="y" aria-label="Yes">✓</td><td class="y" aria-label="Yes">✓</td><td class="y" aria-label="Yes">✓</td></tr>
+        <tr><td>Fitting Room, Photo booth, Play park, Gaming mode</td><td class="y" aria-label="Yes">✓</td><td class="y" aria-label="Yes">✓</td><td class="y" aria-label="Yes">✓</td><td class="y" aria-label="Yes">✓</td></tr>
+        <tr><td>5 wild cats, your cat from a photo</td><td class="n" aria-label="No">–</td><td class="y" aria-label="Yes">✓</td><td class="n" aria-label="No">–</td><td class="n" aria-label="No">–</td></tr>
+        <tr><td>14 more dogs</td><td class="n" aria-label="No">–</td><td class="n" aria-label="No">–</td><td class="y" aria-label="Yes">✓</td><td class="n" aria-label="No">–</td></tr>
+        <tr><td>A raccoon, fox, skunk, possum, squirrel, chipmunk and groundhog</td><td class="n" aria-label="No">–</td><td class="n" aria-label="No">–</td><td class="n" aria-label="No">–</td><td class="y" aria-label="Yes">✓</td></tr>
+        <tr><td>Up to 4 more pets, hats, beds, weather outfits</td><td class="n" aria-label="No">–</td><td class="y" aria-label="Yes">✓</td><td class="y" aria-label="Yes">✓</td><td class="y" aria-label="Yes">✓</td></tr>
       </tbody>
     </table>
     </div>
@@ -370,6 +380,7 @@ footer .brand{font-size:16px}
     <img src="media/group.webp?v=2" alt="Summer, Soot and friends in hats">
   </div>
 </section>
+</main>
 
 <footer>
   <div class="wrap">
@@ -387,7 +398,8 @@ footer .brand{font-size:16px}
 const vids = [...document.querySelectorAll('.clip video')];
 const seen = new IntersectionObserver(es => es.forEach(e => {
   const v = e.target;
-  if (e.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); } else v.pause();
+  if (e.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); }
+  else { v.pause(); v.muted = true; const b = v.parentElement.querySelector('button'); if (b) b.textContent = '🔇 Sound'; }
 }), {threshold: .5});
 vids.forEach(v => {
   seen.observe(v);

@@ -1,5 +1,5 @@
 /* Brand: the one place for colours, fonts and the logo look (S&S brand, decided 2026-10-18; source:
-   summer-phone promo/brand, brand.py). Mark = media/mark.png (two cat heads back to back), badge = media/badge.png.
+   summer-phone promo/brand, brand.py). Mark = media/mark.svg (two cat heads back to back), badge = media/badge.png.
    The site stays dark ("Cosy evening"); never a white page. */
 :root {
   --bg: #1e1828;          /* brand plum */
