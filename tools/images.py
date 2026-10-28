@@ -3,7 +3,7 @@ from pathlib import Path
 from PIL import Image
 H = Path.home(); F = H/'Projects/summer-phone/promo/frames'; S = H/'Projects/summer-phone/store'; M = Path('docs/media')
 PETS = 'summer_none soot_none lab_none raccoon_crown redpanda_beanie fox_cowboy skunk_bow possum_party lynx_tophat serval_flowers ' \
-       'caracal_cap snowleopard_beanie sandcat_party corgi_cap husky_beanie pug_party wolf_crown dachshund_bow dalmatian_tophat ' \
+       'caracal_cap snowleopard_beanie sandcat_party squirrel_flowers chipmunk_bow groundhog_cap corgi_cap husky_beanie pug_party wolf_crown dachshund_bow dalmatian_tophat ' \
        'shiba_flowers beagle_cowboy arcticfox_beanie greyhound_cap'.split()
 def fit(im, w, h=None):
     im = im.copy(); im.thumbnail((w, h or w), Image.LANCZOS); return im
