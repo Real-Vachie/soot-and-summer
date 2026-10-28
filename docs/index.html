@@ -81,6 +81,11 @@ nav a.on{background:var(--bg-3);color:var(--text)}
 .clip{position:relative;border-radius:var(--radius);overflow:hidden;background:var(--soot);aspect-ratio:9/16}
 .clip video{width:100%;height:100%;object-fit:cover}
 .clip button{position:absolute;right:10px;bottom:10px;border:0;border-radius:99px;padding:10px 14px;min-height:40px;font:700 13px var(--font);background:rgba(20,17,28,.75);color:var(--text);cursor:pointer}
+.clip.more{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;text-decoration:none;color:var(--text);padding:20px;background:radial-gradient(ellipse at 50% 30%,color-mix(in srgb,var(--summer) 28%,var(--bg-2)),var(--bg-2) 70%);border:1px solid var(--bg-3)}
+.clip.more img{width:60%}
+.clip.more b{font-size:20px;line-height:1.2}
+.clip.more span{color:var(--glow);font-weight:700;font-size:15px}
+.clip.more:hover{filter:brightness(1.08)}
 .row{display:grid;grid-auto-flow:column;grid-auto-columns:min(240px,62vw);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 16px;padding:4px 16px 16px;margin:24px -16px 0}
 .row>*{scroll-snap-align:start}
 .cap{font-weight:800;margin-top:10px}
@@ -92,6 +97,7 @@ nav a.on{background:var(--bg-3);color:var(--text)}
 .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:36px}
 .fact{background:var(--bg-2);border:1px solid var(--bg-3);border-radius:var(--radius);padding:16px 18px}
 .fact b{display:block}
+@media (min-width:721px){.facts{grid-template-columns:repeat(3,1fr)}.fact.wide{grid-column:1/-1;order:-1}}
 .fact span{color:var(--muted);font-size:15px}
 
 /* join the test */
@@ -196,7 +202,7 @@ footer .brand{font-size:16px}
     </div>
     <div class="facts">
       <div class="fact"><b>Light on battery</b><span>They rest most of the time and stop when the screen is off.</span></div>
-      <div class="fact"><b>Never in your way</b><span>They get out of the way by themselves: Gaming mode (on Auto) moves them aside when a game or video fills the screen, and they turn Tiny at the very bottom when a keyboard opens. On Shy, one touch sends them off until you leave the phone alone. Touch Off lets your taps go straight through them.</span></div>
+      <div class="fact wide"><b>Never in your way</b><span>They get out of the way by themselves: Gaming mode (on Auto) moves them aside when a game or video fills the screen, and they turn Tiny at the very bottom when a keyboard opens. On Shy, one touch sends them off until you leave the phone alone. Touch Off lets your taps go straight through them.</span></div>
       <div class="fact"><b>Photo booth</b><span>Pose your pets and share the picture.</span></div>
       <div class="fact"><b>No ads, no account</b><span>No tracking either. Your settings stay on your phone.</span></div>
     </div>
@@ -211,9 +217,12 @@ footer .brand{font-size:16px}
     <!-- New shorts: add a card here (and the clip in tools/media.sh) once it's posted. -->
     <div class="row">
       <div><div class="clip"><video src="media/clips/notice-me.mp4" poster="media/clips/notice-me.jpg?v=2" muted loop playsinline preload="none"></video><button aria-label="Sound for Notice me!">🔇 Sound</button></div><div class="cap">Notice me!</div></div>
+      <div><div class="clip"><video src="media/clips/wave-chase.mp4" poster="media/clips/wave-chase.jpg?v=2" muted loop playsinline preload="none"></video><button aria-label="Sound for Wave chase">🔇 Sound</button></div><div class="cap">Wave chase</div></div>
+      <div><div class="clip"><video src="media/clips/picnic.mp4" poster="media/clips/picnic.jpg?v=2" muted loop playsinline preload="none"></video><button aria-label="Sound for Picnic basket">🔇 Sound</button></div><div class="cap">Picnic basket</div></div>
+      <div><div class="clip"><video src="media/clips/rainy-day.mp4" poster="media/clips/rainy-day.jpg?v=2" muted loop playsinline preload="none"></video><button aria-label="Sound for Rainy day">🔇 Sound</button></div><div class="cap">Rainy day</div></div>
       <div><div class="clip"><video src="media/clips/say-cheese.mp4" poster="media/clips/say-cheese.jpg?v=2" muted loop playsinline preload="none"></video><button aria-label="Sound for Say cheese!">🔇 Sound</button></div><div class="cap">Say cheese!</div></div>
-      <div><div class="clip"><video src="media/clips/sunbeam.mp4" poster="media/clips/sunbeam.jpg?v=2" muted loop playsinline preload="none"></video><button aria-label="Sound for Sunbeam">🔇 Sound</button></div><div class="cap">Sunbeam</div></div>
-      <div><div class="clip"><video src="media/clips/if-it-fits.mp4" poster="media/clips/if-it-fits.jpg?v=2" muted loop playsinline preload="none"></video><button aria-label="Sound for If it fits…">🔇 Sound</button></div><div class="cap">If it fits…</div></div>
+      <!-- YouTube: add a second link here once the channel is set up -->
+      <div><a class="clip more" href="https://www.instagram.com/soot_and_summer/"><img src="media/mark.svg?v=2" alt=""><b>See more on Instagram</b><span>@soot_and_summer</span></a><div class="cap">More shorts</div></div>
     </div>
   </div>
 </section>

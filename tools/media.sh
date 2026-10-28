@@ -16,6 +16,10 @@ clip notice-me   $SH/headbump/headbump.mp4 0
 clip sunbeam     $SH/sunbeam/sunbeam.mp4 0
 clip say-cheese  $SH/photobooth/photobooth.mp4 0
 clip if-it-fits  $SH/box/box.mp4 0
+# more settings (Vachie, 2026-10-28: "add a variety"): beach, rainy day, park
+clip wave-chase  ~/Videos/sns-shorts/wavechase.mp4 0
+clip rainy-day   $SH/rainy/rainy.mp4 0
+clip picnic      ~/Videos/sns-shorts/picnic.mp4 0
 # app moments (real footage)
 for m in wx dress park game tap tile; do clip moment-$m $V/soot-and-summer-moment-$m.mp4 2.5; done
 python3 tools/images.py
