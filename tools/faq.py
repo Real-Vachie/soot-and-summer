@@ -7,7 +7,7 @@ from pathlib import Path
 SRC = Path.home()/'Projects/summer-phone/help/faq.md'
 PAGE = Path(__file__).resolve().parent.parent/'docs/index.html'
 SKIP_SECTIONS = {'Contact'}   # the app's "Email us" card; the site has its own contact line
-APP_ONLY = re.compile(r'^(if|button|clip|live):|^open$')
+APP_ONLY = re.compile(r'^(if|button|clip|live|words|icon):|^(open|top)$')   # words/icon/top: the app's search + topic tiles
 
 def inline(t):
     t = html.escape(t, quote=False)
