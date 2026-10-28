@@ -3,16 +3,14 @@ from pathlib import Path
 from PIL import Image
 H = Path.home(); F = H/'Projects/summer-phone/promo/frames'; S = H/'Projects/summer-phone/store'; M = Path('docs/media')
 PETS = 'summer_none soot_none lab_none raccoon_crown redpanda_beanie fox_cowboy skunk_bow possum_party lynx_tophat serval_flowers ' \
-       'caracal_cap snowleopard_beanie sandcat_party squirrel_flowers chipmunk_bow groundhog_cap corgi_cap husky_beanie pug_party wolf_crown dachshund_bow dalmatian_tophat ' \
+       'caracal_cap snowleopard_beanie sandcat_party corgi_cap husky_beanie pug_party wolf_crown dachshund_bow dalmatian_tophat ' \
        'shiba_flowers beagle_cowboy arcticfox_beanie greyhound_cap'.split()
 def fit(im, w, h=None):
     im = im.copy(); im.thumbnail((w, h or w), Image.LANCZOS); return im
 DOGS = 'lab corgi husky pug wolf dachshund dalmatian shiba beagle arcticfox greyhound'.split()
-SQ = {'squirrel': 'sit', 'chipmunk': 'sit', 'groundhog': 'upright'}   # the squirrel family's own body: promo/squirrels (sat up)
 for p in PETS:
     name = p.split('_')[0]
     f = H/f'Projects/summer-phone/promo/dogs/{name}_sit_0.png' if name in DOGS else F/f'{p}_0.png'  # promo/frames has dogs on cat bodies
-    if name in SQ: f = H/f'Projects/summer-phone/promo/squirrels/{p}_{SQ[name]}_0.png'
     im = Image.open(f).convert('RGBA'); im = im.crop(im.getbbox())
     fit(im, 200).save(M/f'pets/{p.split("_")[0]}.webp', quality=85)
 fit(Image.open(S/'icon-512.png'), 256).save(M/'app-icon.png')  # the brand mark is copied by hand from summer-phone promo/brand/out
