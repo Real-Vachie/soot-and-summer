@@ -116,14 +116,16 @@ nav a.on{background:var(--bg-3);color:var(--text)}
 @media (max-width:600px){.pack{grid-template-columns:1fr}.pack>img{width:110px}}
 .every{background:linear-gradient(135deg,color-mix(in srgb,var(--summer) 18%,var(--bg)),var(--bg))}
 
-/* compare */
-table{width:100%;border-collapse:collapse;margin-top:28px;font-size:15px}
-th,td{padding:12px 10px;border-bottom:1px solid var(--bg-3);text-align:center}
-th:first-child,td:first-child{text-align:left}
-thead th{font-weight:900}
-td.y{color:var(--summer);font-weight:900}
-td.n{color:var(--muted)}
-.tablewrap{overflow-x:auto}
+/* compare: Free vs With any pack (every pack gives the same; the pack cards above show what's in each) */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.compare .col{background:var(--bg-2);border:1px solid var(--bg-3);border-radius:var(--radius);padding:20px 22px}
+.compare .any{border-color:var(--summer)}
+.compare h3{margin:0 0 10px}
+.compare ul{list-style:none;margin:0;padding:0}
+.compare li{position:relative;padding:7px 0 7px 26px;font-size:15px}
+.compare li::before{content:"✓";position:absolute;left:0;color:var(--summer);font-weight:900}
+.note{color:var(--muted);font-size:15px;margin-top:14px}
+@media (max-width:600px){.compare{grid-template-columns:1fr}}
 
 /* faq: like the app's Help (search, Most asked, topic tiles, one card of rows per topic); tools/faq.py writes it */
 .faq h3{margin:34px 0 10px;color:var(--summer);font-size:16px;letter-spacing:.06em;text-transform:uppercase}
@@ -354,19 +356,27 @@ footer .brand{font-size:16px}
       </div>
     </div>
 
-    <div class="tablewrap">
-    <table>
-      <thead><tr><th><span style="position:absolute;left:-9999px">What you get</span></th><th>Free</th><th>Cat Pack</th><th>Dog Pack</th><th>Backyard Pack</th></tr></thead>
-      <tbody>
-        <tr><td>Summer, Soot, a yellow lab and a red panda</td><td class="y" aria-label="Yes">✓</td><td class="y" aria-label="Yes">✓</td><td class="y" aria-label="Yes">✓</td><td class="y" aria-label="Yes">✓</td></tr>
-        <tr><td>Fitting Room, Photo booth, Play park, Gaming mode</td><td class="y" aria-label="Yes">✓</td><td class="y" aria-label="Yes">✓</td><td class="y" aria-label="Yes">✓</td><td class="y" aria-label="Yes">✓</td></tr>
-        <tr><td>5 wild cats, your cat from a photo</td><td class="n" aria-label="No">–</td><td class="y" aria-label="Yes">✓</td><td class="n" aria-label="No">–</td><td class="n" aria-label="No">–</td></tr>
-        <tr><td>14 more dogs</td><td class="n" aria-label="No">–</td><td class="n" aria-label="No">–</td><td class="y" aria-label="Yes">✓</td><td class="n" aria-label="No">–</td></tr>
-        <tr><td>A raccoon, fox, skunk, possum, squirrel, chipmunk and groundhog</td><td class="n" aria-label="No">–</td><td class="n" aria-label="No">–</td><td class="n" aria-label="No">–</td><td class="y" aria-label="Yes">✓</td></tr>
-        <tr><td>Up to 4 more pets, hats, beds, weather outfits</td><td class="n" aria-label="No">–</td><td class="y" aria-label="Yes">✓</td><td class="y" aria-label="Yes">✓</td><td class="y" aria-label="Yes">✓</td></tr>
-      </tbody>
-    </table>
+    <div class="compare">
+      <div class="col">
+        <h3>Free</h3>
+        <ul>
+          <li>Summer, Soot, a yellow lab and a red panda</li>
+          <li>The Fitting Room, Photo booth, Play park and Gaming mode</li>
+        </ul>
+      </div>
+      <div class="col any">
+        <h3>With any pack</h3>
+        <ul>
+          <li>Everything that's free</li>
+          <li>The pets and things in that pack</li>
+          <li>Up to 4 more pets besides Summer and Soot</li>
+          <li>Hats, beds and weather outfits for all your pets</li>
+          <li>Rename any pet, Summer and Soot too</li>
+          <li>Anything we add to your pack later</li>
+        </ul>
+      </div>
     </div>
+    <p class="note">Every pack is a one-time purchase and gives the same extras; only its own pets and things differ.</p>
   </div>
 </section>
 
