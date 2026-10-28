@@ -33,7 +33,7 @@ h3{font-size:20px}
 p{margin:0 0 1em}
 .wrap{max-width:1080px;margin:0 auto;padding:0 16px}
 section{padding:72px 0}
-@media (max-width:720px){section{padding:52px 0}.hero{padding:60px 0 72px}}
+@media (max-width:720px){section{padding:52px 0}.hero{padding:60px 0 0}}
 section:nth-of-type(even){background:var(--bg-2)}
 .lead{font-size:19px;color:var(--muted);max-width:40em}
 .kicker{font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:13px;color:var(--summer);margin-bottom:8px}
@@ -56,7 +56,7 @@ nav a.on{background:var(--bg-3);color:var(--text)}
 }
 
 /* hero */
-.hero{position:relative;padding:80px 0 96px;text-align:center;overflow:hidden;background:var(--bg)}
+.hero{position:relative;padding:80px 0 0;text-align:center;overflow:hidden;background:var(--bg)}
 .hero::before{content:"";position:absolute;inset:0;background:url(media/room.webp?v=2) center bottom/cover;opacity:.2;filter:blur(3px)}
 .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 35%,transparent 0,var(--bg) 75%)}
 .hero .wrap{position:relative;z-index:1}
@@ -64,11 +64,18 @@ nav a.on{background:var(--bg-3);color:var(--text)}
 .hero h1{font-size:clamp(40px,8vw,72px);margin-bottom:8px}
 .hero .lead{margin:0 auto 26px;font-size:clamp(18px,2.4vw,22px)}
 .soon{display:inline-flex;align-items:center;gap:8px;background:var(--bg-3);border:1px solid color-mix(in srgb,var(--summer) 50%,transparent);padding:7px 16px;border-radius:99px;font-weight:800;font-size:14px;margin-bottom:26px}
+.soon span{white-space:nowrap}
+.soon{flex-wrap:wrap;justify-content:center;column-gap:5px}
 .soon i{width:8px;height:8px;border-radius:50%;background:var(--summer);box-shadow:0 0 10px var(--summer)}
 .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .btn{display:inline-block;font-weight:800;text-decoration:none;padding:13px 24px;border-radius:99px;background:var(--summer);color:var(--summer-ink)}
 .btn.ghost{background:transparent;color:var(--text);border:2px solid color-mix(in srgb,var(--muted) 40%,var(--bg))}
 .btn:hover{filter:brightness(1.08)}
+/* the pets sit along the bottom of the hero, like on a phone screen */
+.parade{display:flex;justify-content:center;align-items:flex-end;gap:clamp(4px,2vw,22px);margin-top:44px;border-bottom:2px solid var(--bg-3)}
+.parade img{height:clamp(52px,12vw,84px);width:auto;margin-bottom:-1px}
+.parade .l{transform:scaleX(-1)}
+@media (max-width:420px){.parade .x{display:none}}
 
 /* clips */
 .clip{position:relative;border-radius:var(--radius);overflow:hidden;background:var(--soot);aspect-ratio:9/16}
@@ -156,11 +163,14 @@ footer .brand{font-size:16px}
     <h1><span class="nm"><span class="s1">Soot</span> <span class="amp">&amp;</span> <span class="s2">Summer</span></span></h1>
     <p class="lead">Two little cats that live on top of your apps. Pet them, carry them, try on hats.</p>
     <!-- RELEASE: swap this pill for "Get it on Google Play" (official badge + store link) -->
-    <div class="soon" data-release="swap"><i></i>Android app · Coming soon to Google Play</div>
+    <div class="soon" data-release="swap"><i></i><span>Android app ·</span> <span>Coming soon to Google&nbsp;Play</span></div>
     <div class="btns">
       <!-- RELEASE: this button becomes the Play Store link -->
       <a class="btn" href="#join" data-release="swap">Try it early</a>
       <a class="btn ghost" href="#shorts">Watch the shorts</a>
+    </div>
+    <div class="parade" aria-hidden="true">
+      <img class="x" src="media/pets/lynx.webp?v=2" alt=""><img src="media/pets/lab.webp?v=2" alt=""><img src="media/pets/redpanda.webp?v=2" alt=""><img src="media/pets/summer.webp?v=2" alt=""><img class="l" src="media/pets/soot.webp?v=2" alt=""><img class="l" src="media/pets/fox.webp?v=2" alt=""><img class="l" src="media/pets/corgi.webp?v=2" alt=""><img class="l x" src="media/pets/raccoon.webp?v=2" alt="">
     </div>
   </div>
 </div>
