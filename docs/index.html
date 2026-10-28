@@ -125,9 +125,36 @@ td.y{color:var(--summer);font-weight:900}
 td.n{color:var(--muted)}
 .tablewrap{overflow-x:auto}
 
-/* faq */
+/* faq: like the app's Help (search, Most asked, topic tiles, one card of rows per topic); tools/faq.py writes it */
 .faq h3{margin:34px 0 10px;color:var(--summer);font-size:16px;letter-spacing:.06em;text-transform:uppercase}
-details{background:var(--bg-2);border:1px solid var(--bg-3);border-radius:14px;margin-bottom:8px}
+.faq svg{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.hs{display:flex;align-items:center;gap:10px;max-width:640px;background:var(--bg-2);border:2px solid var(--bg-3);border-radius:99px;padding:0 18px;height:54px;margin:24px 0 6px;color:var(--muted)}
+.hs:focus-within{border-color:var(--summer)}
+.hs svg{width:20px;height:20px;flex:none}
+.hs input{flex:1;min-width:0;background:none;border:0;outline:0;color:var(--text);font:700 17px var(--font)}
+.hs input::placeholder{color:var(--muted)}
+.hs input::-webkit-search-cancel-button{display:none}
+.hx{background:none;border:0;color:var(--muted);font-size:24px;line-height:1;cursor:pointer;padding:4px}
+.lbl{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:800;margin:26px 2px 10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+@media (max-width:720px){.chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:0 16px}.chips::-webkit-scrollbar{display:none}}
+.chip{flex:none;white-space:nowrap;background:var(--bg-3);color:var(--text);border-radius:99px;padding:9px 16px;font-weight:700;font-size:15px;text-decoration:none}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:860px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:330px){.tiles{grid-template-columns:1fr}}
+.tile{display:flex;flex-direction:column;gap:10px;background:var(--bg-2);border:1px solid var(--bg-3);border-radius:var(--radius);padding:14px;color:var(--text);text-decoration:none}
+.tile:hover,.chip:hover{border-color:var(--summer);filter:brightness(1.08)}
+.th{display:flex;align-items:center;gap:10px;min-height:36px}
+.th b{font-size:16px;line-height:1.25}
+.ic{flex:none;width:34px;height:34px;border-radius:10px;background:var(--bg-3);display:grid;place-items:center;color:var(--summer)}
+.ic svg{width:20px;height:20px}
+.kw{display:flex;flex-wrap:wrap;gap:5px}
+.kw span{font-size:12.5px;line-height:1;padding:5px 8px;border-radius:8px;background:var(--bg-3);color:var(--muted);white-space:nowrap}
+.tile i{margin-top:auto;font-style:normal;font-weight:800;font-size:14px;color:var(--summer)}
+.hback{background:none;border:0;color:var(--summer);font:800 17px var(--font);padding:10px 0;margin-top:14px;cursor:pointer}
+.qs{background:var(--bg-2);border:1px solid var(--bg-3);border-radius:var(--radius);overflow:hidden}
+.qs details{border-top:1px solid var(--bg-3)}
+.qs details:first-child{border-top:0}
 summary{cursor:pointer;font-weight:800;padding:14px 18px;list-style:none;display:flex;justify-content:space-between;gap:12px}
 summary::-webkit-details-marker{display:none}
 summary::after{content:"+";color:var(--summer);font-weight:900}
@@ -135,6 +162,14 @@ details[open] summary::after{content:"–"}
 details>div{padding:0 18px 6px;color:var(--muted)}
 details>div b{color:var(--text)}
 details ul{padding-left:20px;margin:0 0 1em}
+mark{background:none;color:var(--summer);font-weight:900}
+.faq [hidden]{display:none!important}
+.faq.js .topic{display:none}
+.faq.js .topic.on{display:block}
+.faq.js .topic.on h3{color:var(--text);font-size:24px;letter-spacing:0;text-transform:none;margin-top:6px}
+.stuck{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--bg-2);border:1px solid var(--bg-3);border-radius:var(--radius);padding:18px 20px;margin-top:28px;color:var(--muted)}
+.stuck b{display:block;color:var(--text);font-size:18px}
+.empty{color:var(--muted);margin:20px 2px 0}
 
 /* about */
 .about{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
@@ -340,49 +375,62 @@ footer .brand{font-size:16px}
     <div class="kicker">FAQ</div>
     <h2>Questions</h2>
 <!-- FAQ:START (made by tools/faq.py from the app's help/faq.md; edit there, then run it) -->
-<h3>Getting started</h3>
-<details><summary>How do I get my pets on the screen?</summary><div><p>Tap <b>Let them out</b> at the top of Pets. The first time, Android asks you to allow <b>Display over other apps</b> for Soot &amp; Summer: turn it on, come back, and out they come.</p></div></details>
-<details><summary>Can I see the intro again?</summary><div><p>Yes: in the app's Help tab, open this question and tap <b>Show the intro again</b>. Your pets show you how to tap, pet and carry them, then you pick Touch and Sounds again.</p></div></details>
-<details><summary>Why does it need "Display over other apps"?</summary><div><p>That's what lets your pets walk on top of the apps you use. They only feel where your finger touches them, and notice when a keyboard is open so they can turn Tiny; they never read what's on your screen or what you type.</p></div></details>
-<details><summary>Why is there a notification?</summary><div><p>Android needs one while your pets are out. It's handy too: <b>Touch</b> (tap to step through On, Shy and Off), <b>Bed</b>, and <b>Hide pets</b> are right there, and tapping it opens the app.</p></div></details>
-<details><summary>How do I put them away?</summary><div><p><b>Put them away</b> at the top of Pets takes them off the screen. <b>Send to bed</b> keeps them, asleep in their bed. <b>Hide pets</b> in the notification hides them until you tap <b>Show pets</b>. Quicker still: add the <b>Pets</b> tile to Quick Settings (swipe down, tap the pencil, drag <b>Pets</b> in), then tap it to hide or show them.</p></div></details>
-<h3>Playing with your pets</h3>
-<details><summary>What can I do with them?</summary><div><ul><li><b>Tap</b>: a hello.</li><li><b>Pet</b> (slide your finger back and forth): happy sounds and hearts.</li><li><b>Hold and drag</b>: pick a pet up and carry it around.</li><li><b>Double-tap</b>: opens the pet's double-tap app.</li><li><b>Tap a sleeping pet</b>: it half wakes up.</li><li><b>Tap the bed</b>: wakes them up (with Bed in the corner: invites one for a nap).</li></ul></div></details>
-<details><summary>What's the double-tap app?</summary><div><p>Each pet can open an app of your choice when you double-tap it. On Pets, find the pet's card and tap the <b>Double-tap opens</b> tile once → <b>Pick an app</b>.</p></div></details>
-<details><summary>What do Touch On, Shy and Off mean?</summary><div><ul><li><b>On</b>: tap, pet and pick up your pets.</li><li><b>Shy</b>: they look as usual, but any touch sends them away, and they come back when you leave the phone alone. Choose how they leave (<b>Peek</b>, <b>Move away</b> or <b>Disappear</b>) and how soon they come back.</li><li><b>Off</b>: your taps go to the app below, handy for texting.</li></ul><p>You'll find Touch on Pets, in Settings, and in the notification.</p></div></details>
-<details><summary>What's Gaming mode?</summary><div><p>It keeps your pets out of the way while you play. It starts on <b>Auto</b>; change it in Settings:</p><ul><li><b>Auto:</b> when a game or video fills the screen, they leave the way you pick under How they leave (Peek, Move away or Disappear, the same as Shy's), and come back once it ends. Touch works as usual the rest of the time.</li><li><b>On:</b> hold a pet still for 3 seconds (with Touch on Shy, any touch) and they all duck down, ears and eyes peeking up from the bottom, while your taps go to the game. Set Touch again, or turn Gaming mode off, to bring them up.</li><li><b>Off:</b> they stay where they are, full screen or not.</li></ul></div></details>
-<details><summary>Can I hide my pets from the Quick Settings shade?</summary><div><p>Yes. Swipe down from the top, tap the pencil (edit), and drag the <b>Pets</b> tile in. Tap it to <b>Hide pets</b> or <b>Show pets</b>, or to let them out when they're not out. Hold it to open the app.</p></div></details>
-<details><summary>Can my pets have their own personality?</summary><div><p>Yes. On Pets, find the pet's card and pick <b>Sleepy</b>, <b>Balanced</b> or <b>Zoomy</b>, or tap <b>Custom</b> to set how much they nap, climb and get the zoomies. Summer starts Zoomy, Soot starts Sleepy.</p></div></details>
-<details><summary>Can I make a pet chubbier?</summary><div><p>Yes: on the pet's card on Pets, slide <b>Weight</b> from Normal to Chonky.</p></div></details>
-<details><summary>What's the bed for?</summary><div><p>They curl up in it when you <b>Send to bed</b>. Turn on <b>Bed in the corner</b> in Settings and it stays in the corner while they're awake, for naps. Tap <b>Choose bed</b> on Pets to pick another one.</p></div></details>
-<details><summary>Can I change the app's colours?</summary><div><p>Yes: <b>Settings › App colours</b> has ten colours, each in Dark or Light, all free. They change the app's pages only; your pets look the same.</p></div></details>
-<details><summary>Why do the pages stop above my pets?</summary><div><p>That's <b>Keep pets in view</b>: while the app is open, its pages stop above your pets so you can see them as you change looks and hats. The pages still scroll. Turn it off in Settings to have the pages fill the screen again.</p></div></details>
-<details><summary>What happens when I turn the phone?</summary><div><p>Their floor becomes a wall: they cling on or slide down, and sometimes hop in surprise. Don't want that? Turn off <b>Turning the phone</b> in Settings.</p></div></details>
-<h3>Something's not right</h3>
-<details><summary>Why did my pets vanish?</summary><div><p>Most often your phone is saving battery and closed the app. Go to Settings → Apps → Soot &amp; Summer → Battery → <b>Unrestricted</b>.</p></div></details>
-<details><summary>I can't tap the thing under a pet.</summary><div><p>Set Touch to <b>Off</b> and your taps go to the app below. Or <b>Shy</b>: one touch and they get out of your way.</p></div></details>
-<details><summary>They're in the way when I type.</summary><div><p>When a keyboard opens, they turn Tiny and move to the very bottom, out of the way of the keys, and grow back to their size when it closes: <b>Tiny while typing</b> in Settings (on at first; with Touch on Shy they turn Small instead). Some keyboards (a floating one) aren't noticed; then they stay as they are.</p></div></details>
-<details><summary>They're standing on the bar at the bottom.</summary><div><p>In Settings, <b>Floor height</b> moves where they stand (Lowest, Low, High or Custom), and <b>How near the sides</b> sets where they turn back and climb (At the side, A bit in, Further in or Custom). Pick Custom and slide: they move as you do.</p></div></details>
-<details><summary>I can't hear them.</summary><div><p>Check <b>Sounds</b> is on in Settings and the <b>Volume</b> slider under it. They're quiet when your phone is on silent.</p></div></details>
-<h3>Your pets</h3>
-<details><summary>Can I add more pets?</summary><div><p>Yes, with any pack: <b>Add a pet</b> on Pets, up to 4 more besides Summer and Soot. Give each one a look, a hat, a name and its own double-tap app.</p></div></details>
-<details><summary>How do I rename, remove or rest a pet?</summary><div><p>Tap the pet on the Pets page. To rename it, tap <b>✎</b> next to its name: with any pack every pet can be renamed, Summer and Soot too (without one, the extra pets). <b>Remove</b> is at the bottom of its options (extra pets only). Its switch says <b>Comes out</b> or <b>Stays in</b>, so a pet can sit out for a while without being removed.</p></div></details>
-<details><summary>How do I make them bigger or smaller?</summary><div><p>Each pet has its own <b>Size</b> slider on its card, Tiny to Huge, so a big dog can stand taller than a small cat. <b>Size</b> in Settings sets every pet to Small, Medium or Large at once, and overwrites each pet's own size.</p></div></details>
-<details><summary>Can I make a pet that looks like my cat?</summary><div><p>With the Cat Pack: choose a look, then tap <b>From a photo</b>. Pick a photo of your cat, then tap its fur, stripes and patches to copy the colours. The photo stays on your phone and isn't kept; only the colours you pick are saved.</p></div></details>
-<details><summary>What's the Fitting Room?</summary><div><p>Where you try on anything (looks, hats, beds, even pets from packs you don't have) as much as you like. Everything comes off when you leave. Trying looks from two packs? <b>Keep them all</b> gets them together: Google Play asks about each one in turn.</p></div></details>
-<details><summary>How do I take a picture of my pets?</summary><div><p>Open the <b>Photo booth</b> on Pets. Drag your pets around, pinch to resize, twist two fingers to turn them, tap one for poses and faces, then <b>Share</b>, or <b>Save</b> (Android 10 and up).</p></div></details>
-<details><summary>What's the Play park?</summary><div><p>Tap <b>Play park</b> on Pets and the whole screen becomes a park: every pet comes in to play, even ones that stay in, and they're always solid to your touch. Pick <b>Outdoor</b> or <b>Indoor</b> at the top. Tap 📷 and then <b>Snap</b> to take a photo: your pets pause where they are and open in the Photo booth. Leave with <b>‹</b> or your phone's back gesture, and everything goes back as it was.</p></div></details>
-<details><summary>Can I turn off the holiday hats?</summary><div><p>Yes: <b>Holiday hats &amp; beds</b> in Settings. Off, holiday hats and beds are put away (a holiday bed goes back to the rug) until you turn it on again.</p></div></details>
-<details><summary>How do weather outfits work?</summary><div><p>Pick a city and how far ahead to look in Settings, <b>Weather outfits</b>, and your pets dress for the forecast: sun hat, sunglasses, woolly hat, rain hat, umbrella or fan. Weather in the next 3 days always counts; later days only when it's most of them. Each pet's card has its own switch. Comes with any pack.</p></div></details>
-<h3>Packs</h3>
-<details><summary>What's free?</summary><div><p>Summer and Soot, with every look in the <b>Free</b> tab: a yellow lab and a red panda among them.</p></div></details>
-<details><summary>What do I get in a pack?</summary><div><p>Each pack adds its own pets and looks, and with any pack you can add more pets, plus hats and beds. The <b>Packs</b> page shows what's in each one. You can try everything in the Fitting Room first.</p></div></details>
-<details><summary>I got a new phone or reinstalled. Where are my packs?</summary><div><p>Packs come back by themselves when you open the app, as long as the phone uses the same Google account you bought them with. A purchase that's still waiting on Google Play shows up once it goes through.</p></div></details>
-<details><summary>How do I update?</summary><div><p>When Google Play has a newer version, a row at the top of Pets says <b>Update ›</b>. It downloads while you keep playing, then tap <b>Restart ›</b> and your pets come back out.</p></div></details>
-<h3>Battery and privacy</h3>
-<details><summary>Does it use a lot of battery?</summary><div><p>Your pets rest most of the time, and they stop moving when the screen is off or when you tap <b>Hide pets</b>. For none at all, tap <b>Put them away</b>. Most phones show Soot &amp; Summer's battery use in Settings → Battery, so you can check it yourself.</p></div></details>
-<details><summary>What does the app know about me?</summary><div><p>Your settings, the app you pick for double-tap and any photo you use stay on your phone. To let you pick a double-tap app, it lists the apps on your phone; that list never leaves it. If you have Android backup on, your settings go into your own phone backup in your Google account; we never see them. Only a few things leave the phone:</p><ul><li><b>Weather outfits</b>, only if you turn them on: the city you type goes to your phone's map lookup, and a rough spot (about 10 km) goes to our forecast relay to fetch the weather.</li><li>What Google Play needs to sell a pack or tell you an update is ready.</li><li>A date check around launch, for the launch gifts.</li></ul><p>No accounts, no ads, no tracking. The full privacy policy is on our website.</p></div></details>
-<details><summary>How do I remove the app?</summary><div><p>Tap <b>Put them away</b>, then uninstall it like any app. Pictures you saved from the Photo booth stay in Pictures › Soot &amp; Summer.</p></div></details>
+<label class="hs" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4,11a7,7 0 1,0 14,0a7,7 0 1,0 -14,0z M20,20l-4,-4"/></svg><input type="search" placeholder="Search help" aria-label="Search help" autocomplete="off"><button type="button" class="hx" hidden aria-label="Clear search">×</button></label>
+<div class="hhome">
+<div class="lbl">Most asked</div><div class="chips"><a class="chip" href="#q-how-do-i-put-them-away">How do I put them away?</a><a class="chip" href="#q-why-did-my-pets-vanish">Why did my pets vanish?</a><a class="chip" href="#q-they-re-in-the-way-when-i-type">They're in the way when I type.</a></div>
+<div class="lbl">Topics</div><div class="tiles"><a class="tile" href="#t-getting-started"><span class="th"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5,12l5,5l9,-10"/></svg></span><b>Getting started</b></span><span class="kw"><span>Let them out</span><span>Notification</span><span>Put away</span></span><i>5 questions ›</i></a><a class="tile" href="#t-playing-with-your-pets"><span class="th"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="7" r="2"/><circle cx="16" cy="7" r="2"/><circle cx="5" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/><path d="M8 18c0-3 2-5 4-5s4 2 4 5c0 1.5-2 2-4 2s-4-.5-4-2z"/></svg></span><b>Playing with your pets</b></span><span class="kw"><span>Tap &amp; pet</span><span>Double-tap</span><span>Touch</span><span>Gaming mode</span></span><i>11 questions ›</i></a><a class="tile" href="#t-something-s-not-right"><span class="th"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12,4l9,16h-18z M12,10v4 M12,17v0.5"/></svg></span><b>Something's not right</b></span><span class="kw"><span>Vanished</span><span>In the way</span><span>No sound</span></span><i>5 questions ›</i></a><a class="tile" href="#t-your-pets"><span class="th"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5,9l2,-5l3,4h4l3,-4l2,5v4a7,7 0 0,1 -14,0z"/></svg></span><b>Your pets</b></span><span class="kw"><span>Add</span><span>Rename</span><span>Size</span><span>Fitting Room</span></span><i>9 questions ›</i></a><a class="tile" href="#t-packs"><span class="th"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5,8h14a1,1 0 0,1 1,1v10a1,1 0 0,1 -1,1h-14a1,1 0 0,1 -1,-1v-10a1,1 0 0,1 1,-1z M4,12h16 M12,8v12 M12,8c-2,-5 -6,-3 -4,0 M12,8c2,-5 6,-3 4,0"/></svg></span><b>Packs</b></span><span class="kw"><span>What's free</span><span>New phone</span><span>Updates</span></span><i>4 questions ›</i></a><a class="tile" href="#t-battery-and-privacy"><span class="th"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5,7h12a2,2 0 0,1 2,2v6a2,2 0 0,1 -2,2h-12a2,2 0 0,1 -2,-2v-6a2,2 0 0,1 2,-2z M21,11v2 M7,10v4 M10,10v4"/></svg></span><b>Battery and privacy</b></span><span class="kw"><span>Battery</span><span>Your data</span><span>Uninstall</span></span><i>3 questions ›</i></a></div>
+</div>
+<button type="button" class="hback" hidden>‹ Help</button><div class="hfound lbl" hidden></div><div class="hres qs" hidden></div>
+<div class="topic" id="t-getting-started"><h3>Getting started</h3><div class="qs">
+<details id="q-how-do-i-get-my-pets-on-the-screen"><summary>How do I get my pets on the screen?</summary><div><p>Tap <b>Let them out</b> at the top of Pets. The first time, Android asks you to allow <b>Display over other apps</b> for Soot &amp; Summer: turn it on, come back, and out they come.</p></div></details>
+<details id="q-can-i-see-the-intro-again"><summary>Can I see the intro again?</summary><div><p>Yes: in the app's Help tab, open this question and tap <b>Show the intro again</b>. Your pets show you how to tap, pet and carry them, then you pick Touch and Sounds again.</p></div></details>
+<details id="q-why-does-it-need-display-over-other-apps"><summary>Why does it need "Display over other apps"?</summary><div><p>That's what lets your pets walk on top of the apps you use. They only feel where your finger touches them, and notice when a keyboard is open so they can turn Tiny; they never read what's on your screen or what you type.</p></div></details>
+<details id="q-why-is-there-a-notification"><summary>Why is there a notification?</summary><div><p>Android needs one while your pets are out. It's handy too: <b>Touch</b> (tap to step through On, Shy and Off), <b>Bed</b>, and <b>Hide pets</b> are right there, and tapping it opens the app.</p></div></details>
+<details id="q-how-do-i-put-them-away" data-w="hide, off, remove, stop, close"><summary>How do I put them away?</summary><div><p><b>Put them away</b> at the top of Pets takes them off the screen. <b>Send to bed</b> keeps them, asleep in their bed. <b>Hide pets</b> in the notification hides them until you tap <b>Show pets</b>. Quicker still: add the <b>Pets</b> tile to Quick Settings (swipe down, tap the pencil, drag <b>Pets</b> in), then tap it to hide or show them.</p></div></details>
+</div></div>
+<div class="topic" id="t-playing-with-your-pets"><h3>Playing with your pets</h3><div class="qs">
+<details id="q-what-can-i-do-with-them"><summary>What can I do with them?</summary><div><ul><li><b>Tap</b>: a hello.</li><li><b>Pet</b> (slide your finger back and forth): happy sounds and hearts.</li><li><b>Hold and drag</b>: pick a pet up and carry it around.</li><li><b>Double-tap</b>: opens the pet's double-tap app.</li><li><b>Tap a sleeping pet</b>: it half wakes up.</li><li><b>Tap the bed</b>: wakes them up (with Bed in the corner: invites one for a nap).</li></ul></div></details>
+<details id="q-what-s-the-double-tap-app"><summary>What's the double-tap app?</summary><div><p>Each pet can open an app of your choice when you double-tap it. On Pets, find the pet's card and tap the <b>Double-tap opens</b> tile once → <b>Pick an app</b>.</p></div></details>
+<details id="q-what-do-touch-on-shy-and-off-mean"><summary>What do Touch On, Shy and Off mean?</summary><div><ul><li><b>On</b>: tap, pet and pick up your pets.</li><li><b>Shy</b>: they look as usual, but any touch sends them away, and they come back when you leave the phone alone. Choose how they leave (<b>Peek</b>, <b>Move away</b> or <b>Disappear</b>) and how soon they come back.</li><li><b>Off</b>: your taps go to the app below, handy for texting.</li></ul><p>You'll find Touch on Pets, in Settings, and in the notification.</p></div></details>
+<details id="q-what-s-gaming-mode"><summary>What's Gaming mode?</summary><div><p>It keeps your pets out of the way while you play. It starts on <b>Auto</b>; change it in Settings:</p><ul><li><b>Auto:</b> when a game or video fills the screen, they leave the way you pick under How they leave (Peek, Move away or Disappear, the same as Shy's), and come back once it ends. Touch works as usual the rest of the time.</li><li><b>On:</b> hold a pet still for 3 seconds (with Touch on Shy, any touch) and they all duck down, ears and eyes peeking up from the bottom, while your taps go to the game. Set Touch again, or turn Gaming mode off, to bring them up.</li><li><b>Off:</b> they stay where they are, full screen or not.</li></ul></div></details>
+<details id="q-can-i-hide-my-pets-from-the-quick-settings-shade"><summary>Can I hide my pets from the Quick Settings shade?</summary><div><p>Yes. Swipe down from the top, tap the pencil (edit), and drag the <b>Pets</b> tile in. Tap it to <b>Hide pets</b> or <b>Show pets</b>, or to let them out when they're not out. Hold it to open the app.</p></div></details>
+<details id="q-can-my-pets-have-their-own-personality"><summary>Can my pets have their own personality?</summary><div><p>Yes. On Pets, find the pet's card and pick <b>Sleepy</b>, <b>Balanced</b> or <b>Zoomy</b>, or tap <b>Custom</b> to set how much they nap, climb and get the zoomies. Summer starts Zoomy, Soot starts Sleepy.</p></div></details>
+<details id="q-can-i-make-a-pet-chubbier"><summary>Can I make a pet chubbier?</summary><div><p>Yes: on the pet's card on Pets, slide <b>Weight</b> from Normal to Chonky.</p></div></details>
+<details id="q-what-s-the-bed-for"><summary>What's the bed for?</summary><div><p>They curl up in it when you <b>Send to bed</b>. Turn on <b>Bed in the corner</b> in Settings and it stays in the corner while they're awake, for naps. Tap <b>Choose bed</b> on Pets to pick another one.</p></div></details>
+<details id="q-can-i-change-the-app-s-colours"><summary>Can I change the app's colours?</summary><div><p>Yes: <b>Settings › App colours</b> has ten colours, each in Dark or Light, all free. They change the app's pages only; your pets look the same.</p></div></details>
+<details id="q-why-do-the-pages-stop-above-my-pets"><summary>Why do the pages stop above my pets?</summary><div><p>That's <b>Keep pets in view</b>: while the app is open, its pages stop above your pets so you can see them as you change looks and hats. The pages still scroll. Turn it off in Settings to have the pages fill the screen again.</p></div></details>
+<details id="q-what-happens-when-i-turn-the-phone"><summary>What happens when I turn the phone?</summary><div><p>Their floor becomes a wall: they cling on or slide down, and sometimes hop in surprise. Don't want that? Turn off <b>Turning the phone</b> in Settings.</p></div></details>
+</div></div>
+<div class="topic" id="t-something-s-not-right"><h3>Something's not right</h3><div class="qs">
+<details id="q-why-did-my-pets-vanish" data-w="gone, disappeared, disappear, missing, killed, stopped, closed"><summary>Why did my pets vanish?</summary><div><p>Most often your phone is saving battery and closed the app. Go to Settings → Apps → Soot &amp; Summer → Battery → <b>Unrestricted</b>.</p></div></details>
+<details id="q-i-can-t-tap-the-thing-under-a-pet" data-w="button, blocked, covering, click, press"><summary>I can't tap the thing under a pet.</summary><div><p>Set Touch to <b>Off</b> and your taps go to the app below. Or <b>Shy</b>: one touch and they get out of your way.</p></div></details>
+<details id="q-they-re-in-the-way-when-i-type" data-w="keyboard, typing, covering, blocking"><summary>They're in the way when I type.</summary><div><p>When a keyboard opens, they turn Tiny and move to the very bottom, out of the way of the keys, and grow back to their size when it closes: <b>Tiny while typing</b> in Settings (on at first; with Touch on Shy they turn Small instead). Some keyboards (a floating one) aren't noticed; then they stay as they are.</p></div></details>
+<details id="q-they-re-standing-on-the-bar-at-the-bottom"><summary>They're standing on the bar at the bottom.</summary><div><p>In Settings, <b>Floor height</b> moves where they stand (Lowest, Low, High or Custom), and <b>How near the sides</b> sets where they turn back and climb (At the side, A bit in, Further in or Custom). Pick Custom and slide: they move as you do.</p></div></details>
+<details id="q-i-can-t-hear-them" data-w="sound, sounds, mute, quiet, volume, meow, silent"><summary>I can't hear them.</summary><div><p>Check <b>Sounds</b> is on in Settings and the <b>Volume</b> slider under it. They're quiet when your phone is on silent.</p></div></details>
+</div></div>
+<div class="topic" id="t-your-pets"><h3>Your pets</h3><div class="qs">
+<details id="q-can-i-add-more-pets"><summary>Can I add more pets?</summary><div><p>Yes, with any pack: <b>Add a pet</b> on Pets, up to 4 more besides Summer and Soot. Give each one a look, a hat, a name and its own double-tap app.</p></div></details>
+<details id="q-how-do-i-rename-remove-or-rest-a-pet"><summary>How do I rename, remove or rest a pet?</summary><div><p>Tap the pet on the Pets page. To rename it, tap <b>✎</b> next to its name: with any pack every pet can be renamed, Summer and Soot too (without one, the extra pets). <b>Remove</b> is at the bottom of its options (extra pets only). Its switch says <b>Comes out</b> or <b>Stays in</b>, so a pet can sit out for a while without being removed.</p></div></details>
+<details id="q-how-do-i-make-them-bigger-or-smaller" data-w="size, small, big, resize"><summary>How do I make them bigger or smaller?</summary><div><p>Each pet has its own <b>Size</b> slider on its card, Tiny to Huge, so a big dog can stand taller than a small cat. <b>Size</b> in Settings sets every pet to Small, Medium or Large at once, and overwrites each pet's own size.</p></div></details>
+<details id="q-can-i-make-a-pet-that-looks-like-my-cat"><summary>Can I make a pet that looks like my cat?</summary><div><p>With the Cat Pack: choose a look, then tap <b>From a photo</b>. Pick a photo of your cat, then tap its fur, stripes and patches to copy the colours. The photo stays on your phone and isn't kept; only the colours you pick are saved.</p></div></details>
+<details id="q-what-s-the-fitting-room"><summary>What's the Fitting Room?</summary><div><p>Where you try on anything (looks, hats, beds, even pets from packs you don't have) as much as you like. Everything comes off when you leave. Trying looks from two packs? <b>Keep them all</b> gets them together: Google Play asks about each one in turn.</p></div></details>
+<details id="q-how-do-i-take-a-picture-of-my-pets"><summary>How do I take a picture of my pets?</summary><div><p>Open the <b>Photo booth</b> on Pets. Drag your pets around, pinch to resize, twist two fingers to turn them, tap one for poses and faces, then <b>Share</b>, or <b>Save</b> (Android 10 and up).</p></div></details>
+<details id="q-what-s-the-play-park"><summary>What's the Play park?</summary><div><p>Tap <b>Play park</b> on Pets and the whole screen becomes a park: every pet comes in to play, even ones that stay in, and they're always solid to your touch. Pick <b>Outdoor</b> or <b>Indoor</b> at the top. Tap 📷 and then <b>Snap</b> to take a photo: your pets pause where they are and open in the Photo booth. Leave with <b>‹</b> or your phone's back gesture, and everything goes back as it was.</p></div></details>
+<details id="q-can-i-turn-off-the-holiday-hats"><summary>Can I turn off the holiday hats?</summary><div><p>Yes: <b>Holiday hats &amp; beds</b> in Settings. Off, holiday hats and beds are put away (a holiday bed goes back to the rug) until you turn it on again.</p></div></details>
+<details id="q-how-do-weather-outfits-work"><summary>How do weather outfits work?</summary><div><p>Pick a city and how far ahead to look in Settings, <b>Weather outfits</b>, and your pets dress for the forecast: sun hat, sunglasses, woolly hat, rain hat, umbrella or fan. Weather in the next 3 days always counts; later days only when it's most of them. Each pet's card has its own switch. Comes with any pack.</p></div></details>
+</div></div>
+<div class="topic" id="t-packs"><h3>Packs</h3><div class="qs">
+<details id="q-what-s-free" data-w="price, cost, pay, money"><summary>What's free?</summary><div><p>Summer and Soot, with every look in the <b>Free</b> tab: a yellow lab and a red panda among them.</p></div></details>
+<details id="q-what-do-i-get-in-a-pack"><summary>What do I get in a pack?</summary><div><p>Each pack adds its own pets and looks, and with any pack you can add more pets, plus hats and beds. The <b>Packs</b> page shows what's in each one. You can try everything in the Fitting Room first.</p></div></details>
+<details id="q-i-got-a-new-phone-or-reinstalled-where-are-my-packs" data-w="restore, bought, purchase, lost, missing"><summary>I got a new phone or reinstalled. Where are my packs?</summary><div><p>Packs come back by themselves when you open the app, as long as the phone uses the same Google account you bought them with. A purchase that's still waiting on Google Play shows up once it goes through.</p></div></details>
+<details id="q-how-do-i-update"><summary>How do I update?</summary><div><p>When Google Play has a newer version, a row at the top of Pets says <b>Update ›</b>. It downloads while you keep playing, then tap <b>Restart ›</b> and your pets come back out.</p></div></details>
+</div></div>
+<div class="topic" id="t-battery-and-privacy"><h3>Battery and privacy</h3><div class="qs">
+<details id="q-does-it-use-a-lot-of-battery" data-w="drain, power"><summary>Does it use a lot of battery?</summary><div><p>Your pets rest most of the time, and they stop moving when the screen is off or when you tap <b>Hide pets</b>. For none at all, tap <b>Put them away</b>. Most phones show Soot &amp; Summer's battery use in Settings → Battery, so you can check it yourself.</p></div></details>
+<details id="q-what-does-the-app-know-about-me"><summary>What does the app know about me?</summary><div><p>Your settings, the app you pick for double-tap and any photo you use stay on your phone. To let you pick a double-tap app, it lists the apps on your phone; that list never leaves it. If you have Android backup on, your settings go into your own phone backup in your Google account; we never see them. Only a few things leave the phone:</p><ul><li><b>Weather outfits</b>, only if you turn them on: the city you type goes to your phone's map lookup, and a rough spot (about 10 km) goes to our forecast relay to fetch the weather.</li><li>What Google Play needs to sell a pack or tell you an update is ready.</li><li>A date check around launch, for the launch gifts.</li></ul><p>No accounts, no ads, no tracking. The full privacy policy is on our website.</p></div></details>
+<details id="q-how-do-i-remove-the-app"><summary>How do I remove the app?</summary><div><p>Tap <b>Put them away</b>, then uninstall it like any app. Pictures you saved from the Photo booth stay in Pictures › Soot &amp; Summer.</p></div></details>
+</div></div>
+<div class="stuck"><div><b>Still stuck?</b>Write to us and we'll help.</div><a class="btn" href="mailto:vachiek@gmail.com">✉ Email us</a></div>
 <!-- FAQ:END -->
   </div>
 </section>
@@ -440,6 +488,67 @@ const spy = new IntersectionObserver(es => es.forEach(e => {
   if (on) nav.scrollTo({left: on.offsetLeft - nav.offsetLeft - 16, behavior: 'smooth'});
 }), {rootMargin: '-45% 0px -50% 0px'});
 document.querySelectorAll('section[id]').forEach(s => spy.observe(s));
+// FAQ, like the app's Help: tiles open one topic, Most asked opens that question, search lists matches as you type
+// (every word must be in the question, its data-w words or the answer; question hits first). Back/forward work.
+const faq = document.getElementById('faq');
+if (faq) {
+  faq.classList.add('js');
+  const box = faq.querySelector('.hs'), q = box.querySelector('input'), clr = box.querySelector('.hx');
+  const home = faq.querySelector('.hhome'), back = faq.querySelector('.hback'), found = faq.querySelector('.hfound'), res = faq.querySelector('.hres');
+  const topics = [...faq.querySelectorAll('.topic')], cards = [...faq.querySelectorAll('.topic details')];
+  const empty = document.createElement('p');
+  empty.className = 'empty'; found.after(empty);
+  box.hidden = false;
+  const esc = s => s.replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+  function show(id) {   // '' = Help home, 't-…' = a topic, 'q-…' = a question opened in its topic
+    const card = id.startsWith('q-') && document.getElementById(id);
+    const topic = card ? card.closest('.topic') : id.startsWith('t-') && document.getElementById(id);
+    topics.forEach(t => t.classList.toggle('on', t === topic));
+    home.hidden = !!topic; back.hidden = !topic;
+    found.hidden = res.hidden = true; empty.hidden = true; res.innerHTML = '';
+    if (card) card.open = true;
+    return card || topic;
+  }
+  function go(id) {
+    q.value = ''; clr.hidden = true;
+    history.pushState(null, '', id ? '#' + id : '#faq');
+    const el = show(id);
+    (el && el.classList.contains('topic') ? el : faq).scrollIntoView({block: 'start'});
+    if (el && el.tagName === 'DETAILS') el.scrollIntoView({block: 'center'});
+  }
+  function search(term) {
+    const words = term.toLowerCase().split(/\s+/).filter(w => w.length > 1);
+    if (!words.length) return show('');
+    const hits = cards.map(c => {
+      const qq = c.querySelector('summary').textContent.toLowerCase(), ww = (c.dataset.w || '').toLowerCase(), aa = c.querySelector('div').textContent.toLowerCase();
+      let s = 0;
+      for (const w of words) { if (qq.includes(w)) s += 3; else if (ww.includes(w)) s += 2; else if (aa.includes(w)) s += 1; else return null; }
+      return {c, s};
+    }).filter(Boolean).sort((a, b) => b.s - a.s).map(x => x.c);
+    const re = new RegExp('(' + words.map(w => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|') + ')', 'gi');
+    topics.forEach(t => t.classList.remove('on'));
+    home.hidden = true; back.hidden = false;
+    res.innerHTML = '';
+    hits.forEach(c => {
+      const d = c.cloneNode(true); d.removeAttribute('id'); d.open = false;
+      const s = d.querySelector('summary'); s.innerHTML = esc(s.textContent).replace(re, '<mark>$1</mark>');
+      res.append(d);
+    });
+    found.textContent = hits.length === 1 ? '1 found' : hits.length + ' found';
+    found.hidden = res.hidden = !hits.length;
+    empty.textContent = 'Nothing found for “' + term + '”.'; empty.hidden = !!hits.length;
+  }
+  q.addEventListener('input', () => { clr.hidden = !q.value; search(q.value.trim()); });
+  clr.addEventListener('click', () => { q.value = ''; clr.hidden = true; show(''); q.focus(); });
+  back.addEventListener('click', () => go(''));
+  faq.addEventListener('click', e => {
+    const a = e.target.closest('a.tile, a.chip'); if (!a) return;
+    e.preventDefault(); go(a.getAttribute('href').slice(1));
+  });
+  const route = () => { const h = location.hash.slice(1); const el = show(/^[tq]-/.test(h) ? h : ''); if (el) el.scrollIntoView({block: 'start'}); };
+  addEventListener('popstate', route);
+  if (/^#[tq]-/.test(location.hash)) route(); else show('');
+}
 </script>
 </body>
 </html>
