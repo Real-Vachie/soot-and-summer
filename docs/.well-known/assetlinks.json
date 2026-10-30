@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.realvachie.sootandsummer",
+      "sha256_cert_fingerprints": [
+        "98:0B:4F:34:B0:E9:FC:EF:2F:E3:09:84:0B:1A:3B:97:A6:83:21:5D:06:6D:7A:D2:8F:52:C4:98:EE:43:D8:6F",
+        "C1:9C:55:AF:72:9E:67:BE:50:67:1B:FF:BA:7A:A0:4D:07:86:ED:CA:EB:6E:68:F0:8A:E8:CA:33:07:9C:29:D5"
+      ]
+    }
+  }
+]
