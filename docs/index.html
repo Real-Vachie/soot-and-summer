@@ -4,8 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Soot & Summer: Pocket Pets</title>
-<!-- RELEASE: description says "coming soon" -->
-<meta name="description" content="Summer and Soot, two little cats that live over your Android apps. Coming soon to Google Play.">
+<meta name="description" content="Summer and Soot, two little cats that live over your Android apps. Free on Google Play.">
 <meta property="og:title" content="Soot & Summer: Pocket Pets">
 <meta property="og:description" content="Two little cats that live over your Android apps.">
 <meta property="og:image" content="https://soot-and-summer.com/media/badge.png?v=2">
@@ -65,6 +64,8 @@ nav a.on{background:var(--bg-3);color:var(--text)}
 .hero .lead{margin:0 auto 26px;font-size:clamp(18px,2.4vw,22px)}
 .soon{display:inline-flex;align-items:center;gap:8px;background:var(--bg-3);border:1px solid color-mix(in srgb,var(--summer) 50%,transparent);padding:7px 16px;border-radius:99px;font-weight:800;font-size:14px;margin-bottom:26px}
 .soon span{white-space:nowrap}
+.play{display:inline-block;line-height:0}
+.play img{height:64px;width:auto}
 .soon{flex-wrap:wrap;justify-content:center;column-gap:5px}
 .soon i{width:8px;height:8px;border-radius:50%;background:var(--summer);box-shadow:0 0 10px var(--summer)}
 .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
@@ -191,7 +192,6 @@ footer .brand{font-size:16px}
     <nav>
       <a href="#what">What it is</a>
       <a href="#shorts">Shorts</a>
-      <a href="#join" data-release="remove">Join the test</a>
       <a href="#packs">Packs</a>
       <a href="#faq">FAQ</a>
       <a href="#about">About</a>
@@ -205,11 +205,9 @@ footer .brand{font-size:16px}
     <img class="logo" src="media/mark.svg?v=2" alt="">
     <h1><span class="nm"><span class="s1">Soot</span> <span class="amp">&amp;</span> <span class="s2">Summer</span></span></h1>
     <p class="lead">Two little cats that live over your apps. Pet them, carry them, try on hats.</p>
-    <!-- RELEASE: swap this pill for "Get it on Google Play" (official badge + store link) -->
-    <div class="soon" data-release="swap"><i></i><span>Android app ·</span> <span>Coming soon to Google&nbsp;Play</span></div>
+    <a class="play" href="https://play.google.com/store/apps/details?id=com.realvachie.sootandsummer"><img src="media/google-play-badge.png" alt="Get it on Google Play" width="646" height="250"></a>
     <div class="btns">
-      <!-- RELEASE: this button becomes the Play Store link -->
-      <a class="btn" href="#join" data-release="swap">Try it early</a>
+      <a class="btn" href="https://play.google.com/store/apps/details?id=com.realvachie.sootandsummer">Get the app, free</a>
       <a class="btn ghost" href="#shorts">Watch the shorts</a>
     </div>
     <div class="parade" aria-hidden="true">
@@ -261,21 +259,6 @@ footer .brand{font-size:16px}
       <!-- YouTube: add a second link here once the channel is set up -->
       <div><a class="clip more" href="https://www.instagram.com/soot_and_summer/"><img src="media/mark.svg?v=2" alt=""><b>See more on Instagram</b><span>@soot_and_summer</span></a><div class="cap">More shorts</div></div>
     </div>
-  </div>
-</section>
-
-<!-- RELEASE: remove this whole section (and its nav link) on launch day -->
-<section id="join" data-release="remove">
-  <div class="wrap">
-    <div class="kicker">Join the test</div>
-    <h2>Try it before everyone else</h2>
-    <p class="lead">Soot &amp; Summer is in a closed test on Google Play. Testers get the app early, and every pack is free while the test runs: Play still shows the price, but testers are never charged.</p>
-    <div class="steps">
-      <div class="step"><h3>Join the group</h3><p>Join our Google Group with the Google account you use for Play.</p><a class="btn" href="https://groups.google.com/g/soot-and-summer-testing">Join the group</a></div>
-      <div class="step"><h3>Opt in</h3><p>Open the test page on Google Play and tap to become a tester.</p><a class="btn" href="https://play.google.com/apps/testing/com.realvachie.sootandsummer">Become a tester</a></div>
-      <div class="step"><h3>Install</h3><p>Install Soot &amp; Summer from Google Play and stay opted in for 14 days. That's all Google needs from you.</p></div>
-    </div>
-    <p>Found a bug or have an idea? The <b>Testers</b> card at the top of Settings has <b>Report a bug</b> and <b>Send an idea</b>.</p>
   </div>
 </section>
 
