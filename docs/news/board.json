@@ -2,6 +2,14 @@
   "v": 1,
   "posts": [
     {
+      "id": "2026-11-04-new-test-post",
+      "date": "2026-11-04",
+      "title": "New test post",
+      "text": "Hi , 😊",
+      "button": "See new Packs",
+      "open": "packs"
+    },
+    {
       "id": "2026-11-03-omg-it-s-new",
       "date": "2026-11-03",
       "title": "Omg it's new",
