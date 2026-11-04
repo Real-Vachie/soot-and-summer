@@ -12,7 +12,7 @@ PAGE = Path(__file__).resolve().parent.parent/'docs/index.html'
 ICONS = Path.home()/'Projects/summer-phone/app/src/main/res/drawable'
 PAW = '<circle cx="8" cy="7" r="2"/><circle cx="16" cy="7" r="2"/><circle cx="5" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/><path d="M8 18c0-3 2-5 4-5s4 2 4 5c0 1.5-2 2-4 2s-4-.5-4-2z"/>'   # play = the app's paw
 SKIP_SECTIONS = {'Contact'}   # the app's "Email us" card; the site has its own contact line
-APP_ONLY = re.compile(r'^(if|button|clip|live|words|icon):|^(open|top)$')   # words/icon/top: the app's search + topic tiles
+APP_ONLY = re.compile(r'^(if|button|clip|live|words|icon|top):|^(open|top)$')   # words/icon/top: the app's search + topic tiles
 
 def inline(t):
     t = html.escape(t, quote=False)
@@ -38,7 +38,7 @@ sections, section, q, lines, words, off, top = [], None, None, [], [], False, Fa
 def flush():
     if q and not off and section['title'] not in SKIP_SECTIONS:
         section['cards'].append(card(q, lines, words))
-        if top: tops.append(q)
+        if top: tops.append((top, len(tops), q))     # top: 1 first, then plain top in file order
 tops = []
 for l in text.splitlines():
     l = l.strip()
@@ -51,10 +51,12 @@ for l in text.splitlines():
         elif l.startswith('words:'): section['tags'] = [w.strip() for w in l[6:].split('·')]
     elif q is not None:
         if l == 'off': off = True
-        elif l == 'top': top = True
+        elif l == 'top': top = 99
+        elif l.startswith('top:'): top = int(l[4:].strip() or 99)
         elif l.startswith('words:'): words = [w.strip() for w in l[6:].split(',')]
         elif not APP_ONLY.match(l): lines.append(l)
 flush()
+tops = [t[2] for t in sorted(tops)]
 sections = [s for s in sections if s['title'] not in SKIP_SECTIONS and s['cards']]
 
 def tile(s):
