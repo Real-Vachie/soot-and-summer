@@ -1,4 +1,13 @@
 {
   "v": 1,
-  "posts": []
+  "posts": [
+    {
+      "id": "2026-11-03-omg-it-s-new",
+      "date": "2026-11-03",
+      "title": "Omg it's new",
+      "text": "But not like... \"New\" 🫠",
+      "button": "Open help duh",
+      "open": "help"
+    }
+  ]
 }
