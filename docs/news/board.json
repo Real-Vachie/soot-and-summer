@@ -1,11 +1,4 @@
 {
   "v": 1,
-  "posts": [
-    {
-      "id": "2026-11-02-welcome",
-      "date": "2026-11-02",
-      "title": "News from us is here",
-      "text": "This is where we'll post now and then about what's new with Soot & Summer. Tap ✕ to hide a post, or turn news off in Settings."
-    }
-  ]
+  "posts": []
 }
