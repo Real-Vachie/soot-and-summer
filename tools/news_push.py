@@ -7,7 +7,7 @@ Claude runs this on "push the news":
   3. commit + push the site; set the board's sync/state pushedAt = now; delete the posts marked deleted.
 
 Newest date first (newer createdAt first on the same day). Drops removed posts and empty fields.
-Fields the app reads: id, date, title, text, button, open, until, silent (Board.kt).
+Fields the app reads: id, date, title, text, button, open, until, silent, media (Board.kt; media = a picture/clip packed in the app, NEWS_ONE_LIST).
 """
 import json, re, sys
 from pathlib import Path
@@ -50,6 +50,8 @@ def main():
             p["until"] = r["until"]
         if r.get("silent"):
             p["silent"] = True
+        if r.get("media"):
+            p["media"] = r["media"]
         posts.append(p)
     if len(posts) > MAX_POSTS:
         problems.append(f"{len(posts)} posts: the app shows only the newest {MAX_POSTS}")

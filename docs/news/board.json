@@ -1,4 +1,36 @@
 {
   "v": 1,
-  "posts": []
+  "posts": [
+    {
+      "id": "2026-10-31-12-new-animals",
+      "date": "2026-10-31",
+      "title": "12 new animals in the packs",
+      "text": "The Cat Pack has 8 more cats: wild ones like the ocelot, bobcat and Pallas's cat, and breeds like the Siamese, Ragdoll, Maine Coon, Bengal and Sphynx. The Backyard Pack adds a coati, a red squirrel, a palm squirrel and a prairie dog. Try them all in the Fitting Room."
+    },
+    {
+      "id": "2026-10-28-dress-up-play-park",
+      "date": "2026-10-28",
+      "title": "Dress up in the Play park",
+      "text": "Tap 👕 in the Play park to open the Fitting Room without leaving. Change a look or a hat, or bring in another pet, and they keep it on while they play. With a pack, you pick Keep or Put it back when you leave, for what your packs cover.",
+      "media": "park-dress-up"
+    },
+    {
+      "id": "2026-10-28-19-new-hats",
+      "date": "2026-10-28",
+      "title": "19 new hats",
+      "text": "Nineteen new hats for your pets: a wizard hat, a halo, a propeller beanie and more, plus hats from around the world like a fez, a nón lá, a kalpak, a chullo and a Panama hat. They come with any pack; pick one in the Fitting Room."
+    },
+    {
+      "id": "2026-10-28-search-help",
+      "date": "2026-10-28",
+      "title": "Search help",
+      "text": "Help has a search box now: type a few words and the answers show up as you type. Below it are the Most asked questions and a tile for each topic. Want the intro again? It has its own card near the bottom."
+    },
+    {
+      "id": "2026-10-28-squirrel-chipmunk-groundhog",
+      "date": "2026-10-28",
+      "title": "Squirrel, chipmunk and groundhog",
+      "text": "Three new visitors in the Backyard Pack, each moving like the real animal: the squirrel dashes about, sits up with a nut and comes down the side of your screen head-first; the chipmunk stuffs its cheeks; the groundhog waddles, stands up tall to look around and digs. If you had the Cat Pack before the Backyard Pack came, they're yours too."
+    }
+  ]
 }
