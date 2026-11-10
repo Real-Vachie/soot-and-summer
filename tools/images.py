@@ -16,7 +16,13 @@ for p in PETS:
     im = Image.open(f).convert('RGBA'); im = im.crop(im.getbbox())
     fit(im, 200).save(M/f'pets/{p.split("_")[0]}.webp', quality=85)
 fit(Image.open(S/'icon-512.png'), 256).save(M/'app-icon.png')  # the brand mark is copied by hand from summer-phone promo/brand/out
-for p in ('cat_pack', 'dog_pack'): fit(Image.open(S/f'packs/{p}.png'), 360).save(M/f'{p}.webp', quality=85)
+# Hopper Pack (on sale since 1.5.96): the hoppers' own body, resting pose in a hat (promo/hoppers, pull_hoppers.sh)
+HOP = 'bunny_grey_sit-bow bunny_lop_sit-flowers bunny_dutch_sit-tophat jackrabbit_sit-cowboy hare_sit-flatcap frog_tree_squat-crown frog_pond_squat-cap ' \
+      'frog_dart_squat-party bullfrog_squat-tophat toad_squat-flatcap roo_red_stand-cowboy roo_grey_stand-cap wallaby_stand-beanie quokka_stand-flowers'.split()
+for p in HOP:
+    im = Image.open(H/f'Projects/summer-phone/promo/hoppers/{p}_0.png').convert('RGBA'); im = im.crop(im.getbbox())
+    fit(im, 200).save(M/f'pets/{p.rsplit("_", 1)[0]}.webp', quality=85)
+for p in ('cat_pack', 'dog_pack', 'hopper_pack'): fit(Image.open(S/f'packs/{p}.png'), 360).save(M/f'{p}.webp', quality=85)
 O = H/'Projects/sns-shorts/out/photos'
 room = Image.open(O/'group_a_16x9.png').convert('RGB'); room = room.crop((0, int(room.height * .38), room.width, room.height))  # below its title
 fit(room, 1600).save(M/'room.webp', quality=78)
